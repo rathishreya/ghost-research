@@ -1,11 +1,15 @@
 ---
 name: prep-campaign
-description: Pre-flight technical setup + click-by-click Ads Manager checklist for a Ghost Research campaign. Verifies OG meta tags, pixels, UTMs, retargeting audiences, $500 budget caps are all in place before Day 1. The campaign brief already has platform splits + ad copy — this skill is the launch operations layer. Use when assets are generated and the user is ready to publish, says "prep the campaign", "/prep-campaign".
+description: Pre-flight technical setup + click-by-click Ads Manager checklist for a Ghost Research campaign. Verifies OG meta tags, waitlist or enquiry flows, pixels, UTMs, retargeting audiences, and budget caps are all in place before Day 1. Supports both off-the-shelf report launches and Ghost Elite lead-gen campaigns. Use when assets are generated and the user is ready to publish, says "prep the campaign", "/prep-campaign".
 ---
 
 # Campaign Launch Operations — Ghost Research
 
 Your job: verify everything is technically ready and produce a click-by-click checklist the user follows in Meta / LinkedIn / X / Instagram Ads Manager. The campaign brief already specifies budgets, audiences, copy, and visuals — you do NOT redesign those. You produce the **launch operations layer**.
+
+Respect the brief's structural rule:
+- **Week 1 (Days 1-7)** = hype only, with soft CTAs like waitlist / get notified / explore capability
+- **Day 8 onward** = launch + retargeting, with direct purchase or enquiry CTAs
 
 ## Step 1 — Confirm assets exist
 
@@ -20,7 +24,7 @@ Then stop.
 
 ## Step 2 — Read inputs
 
-- `data/proposals/<slug>/campaign-brief.md` — for platforms, budgets, audiences, copy, schedule, KPIs
+- `data/proposals/<slug>/campaign-brief.md` — for product line, platforms, budgets, audiences, copy, schedule, KPIs
 - `data/proposals/<slug>/visual-concepts.md` — for asset-to-day mapping
 - `data/proposals/<slug>/prompts.md` — for asset filenames
 
@@ -33,8 +37,9 @@ Save to `data/proposals/<slug>/launch-checklist.md`:
 slug: [slug]
 created: [YYYY-MM-DD]
 publish_date: [from brief]
+product: [from brief]
 platforms: [list from brief Section 2.1]
-total_budget: $500
+total_budget: $[from brief]
 status: ready-to-publish
 ---
 
@@ -46,32 +51,46 @@ status: ready-to-publish
 
 ## 🚨 PRE-FLIGHT — must complete before any ad goes live
 
-### Website / report page
-- [ ] Report URL is live: `ghostresearch.com/[report-slug]`
+### Website / landing flow
+- [ ] Product path confirmed: **off-the-shelf report** or **Ghost Elite enquiry**
+- [ ] Week 1 landing page is ready:
+  - [ ] Off-the-shelf: waitlist / "get notified" page for the upcoming report
+  - [ ] Ghost Elite: capability page or enquiry page with soft Week 1 CTA
+- [ ] Week 2 landing page is ready:
+  - [ ] Off-the-shelf: live report page at `ghostresearch.com/[report-slug]`
+  - [ ] Ghost Elite: working enquiry page at `ghostresearch.com/ghost-elite`
 - [ ] Page loads correctly on **mobile** (test on your phone, not just desktop)
-- [ ] **OG meta tags set on the report page:**
+- [ ] **OG meta tags set on the live destination page:**
   - [ ] `og:title` = "[Report title]"
   - [ ] `og:description` = "[2-line description from brief]"
   - [ ] `og:image` = a 1200×630 hero image (use one of the concepts from visual-concepts.md, or design tool)
-  - [ ] `og:url` = the full report URL
+  - [ ] `og:url` = the full live destination URL
   - [ ] `twitter:card` = "summary_large_image"
-  - **How to verify:** paste the report URL into [opengraph.xyz](https://www.opengraph.xyz) — preview should show the hero image and title, not blank
-- [ ] Purchase flow works end-to-end (test with a $0.01 transaction or coupon)
+  - **How to verify:** paste the live destination URL into [opengraph.xyz](https://www.opengraph.xyz) — preview should show the hero image and title, not blank
+- [ ] Publish timing is confirmed: the report goes live at end of Day 7
+- [ ] Conversion flow works end-to-end:
+  - [ ] Off-the-shelf: waitlist signup works in Week 1, purchase flow works in Week 2
+  - [ ] Ghost Elite: enquiry form submits successfully and routes to a human owner
+- [ ] For Ghost Elite: a human is on standby to follow up within 24 hours
 
 ### Tracking pixels
-- [ ] **Meta Pixel** installed on report page (test with Meta Pixel Helper Chrome extension — must show "active")
+- [ ] **Meta Pixel** installed on the Week 1 and Week 2 destination pages (test with Meta Pixel Helper Chrome extension — must show "active")
 - [ ] **LinkedIn Insight Tag** installed (only if running LinkedIn — verify in Campaign Manager → Account Assets → Insight Tag)
 - [ ] **X / Twitter Pixel** installed (only if running X — verify in Ads Manager → Tools → Conversion Tracking)
 - [ ] Conversion events defined on each pixel:
-  - [ ] `page_view` (fires on report page load)
-  - [ ] `initiate_checkout` (fires on add-to-cart click)
-  - [ ] `purchase` (fires on order confirmation)
+  - [ ] `page_view` (fires on landing page load)
+  - [ ] `waitlist_signup` (Week 1 off-the-shelf primary event)
+  - [ ] `initiate_checkout` (Week 2 off-the-shelf)
+  - [ ] `purchase` (Week 2 off-the-shelf)
+  - [ ] `lead_submission` (Ghost Elite primary event)
 
 ### Audiences (create BEFORE Day 1 — retargeting needs them ready by Day 8)
-- [ ] **Meta:** Custom audience "Visited [slug] page — last 30d" (URL contains [report-slug])
+- [ ] **Meta:** Custom audience "Visited [slug] landing flow — last 30d"
+- [ ] **Meta:** Custom audience "Waitlist signup — last 14d" (if off-the-shelf)
 - [ ] **Meta:** Custom audience "Initiated checkout — no purchase, last 14d"
+- [ ] **Meta:** Custom audience "Ghost Elite enquiry started / no submit" (if applicable)
 - [ ] **Meta:** Lookalike audience 1% off Initiate Checkout audience (requires source size 100+)
-- [ ] **LinkedIn:** Matched audience "Visited [slug] page — last 30d"
+- [ ] **LinkedIn:** Matched audience "Visited [slug] landing flow — last 30d"
 - [ ] **X:** Tailored audience "Engaged with [campaign hashtag] tweet"
 
 ### Budget caps (account-level safety net)
@@ -85,24 +104,24 @@ status: ready-to-publish
 All destination URLs use this scheme:
 
 ```
-https://ghostresearch.com/[report-slug]?utm_source=[platform]&utm_medium=paidsocial&utm_campaign=[slug]&utm_content=[concept-name]&utm_term=[week1|week2|retargeting]
+https://ghostresearch.com/[path]?utm_source=[platform]&utm_medium=paidsocial&utm_campaign=[slug]&utm_content=[concept-name]&utm_term=[week1-hype|week2-launch|retargeting|elite-cross-sell]
 ```
 
 **Pre-built URLs for this campaign** (copy these directly when setting up ads):
 
-| Platform | Week | URL |
+| Platform | Phase | URL |
 |---|---|---|
-| Meta IG | Week 1 | https://ghostresearch.com/[slug]?utm_source=instagram&utm_medium=paidsocial&utm_campaign=[slug]&utm_content=[concept-01]&utm_term=week1 |
-| Meta IG | Week 2 | https://ghostresearch.com/[slug]?utm_source=instagram&utm_medium=paidsocial&utm_campaign=[slug]&utm_content=[concept-02]&utm_term=week2 |
-| Meta IG | Retargeting | https://ghostresearch.com/[slug]?utm_source=instagram&utm_medium=paidsocial&utm_campaign=[slug]&utm_content=[concept-rtg]&utm_term=retargeting |
-| LinkedIn | Week 1 | ... |
+| Meta IG | Week 1 Hype | https://ghostresearch.com/[path]?utm_source=instagram&utm_medium=paidsocial&utm_campaign=[slug]&utm_content=[concept-01]&utm_term=week1-hype |
+| Meta IG | Week 2 Launch | https://ghostresearch.com/[path]?utm_source=instagram&utm_medium=paidsocial&utm_campaign=[slug]&utm_content=[concept-02]&utm_term=week2-launch |
+| Meta IG | Retargeting | https://ghostresearch.com/[path]?utm_source=instagram&utm_medium=paidsocial&utm_campaign=[slug]&utm_content=[concept-rtg]&utm_term=retargeting |
+| LinkedIn | Week 1 Hype | ... |
 | ... | ... | ... |
 
 [Generate one row per platform × week × concept actually being run, based on the calendar in campaign-brief.md Section 3.]
 
 ---
 
-## 🚀 DAY 1 — LAUNCH SEQUENCE
+## 🚀 DAY 1 — WEEK 1 HYPE LAUNCH
 
 Read these in order. Don't skip ahead.
 
@@ -125,9 +144,9 @@ Time required: ~20 minutes
    - [ ] Click "Create Ad"
    - [ ] Format: [from brief]
    - [ ] Upload: `data/proposals/[slug]/assets/[filename].[ext]`
-   - [ ] Headline: paste from Section 7 of brief
-   - [ ] Intro text: paste from Section 7
-   - [ ] CTA: [from brief]
+   - [ ] Headline: paste the **Week 1 hype-safe** version from Section 7 of the brief
+   - [ ] Intro text: paste the **Week 1 hype-safe** copy from Section 7
+   - [ ] CTA: use the **soft Week 1 CTA** from the brief (`Get notified`, `Join the waitlist`, `Explore the capability`)
    - [ ] Destination URL: [paste pre-built UTM URL from table above]
 5. [ ] Submit all ads for review
 6. [ ] **Do NOT yet build retargeting campaign** — set a calendar reminder for Day 8
@@ -154,23 +173,39 @@ Time required: ~20 minutes
 
 ---
 
-## 📅 DAY 8 — RETARGETING ACTIVATION
+## 🔁 DAY 5 — HYPE PIVOT CHECK
+
+1. [ ] Confirm the brief's Week 1 checkpoint metric:
+   - [ ] Waitlist signup rate is on track, OR
+   - [ ] Engagement / CTR threshold is on track for Ghost Elite capability ads
+2. [ ] If the brief calls for it, swap Hook 1 creative to Hook 2 creative for Days 5-7
+3. [ ] Confirm report publish is still on track for end of Day 7
+
+---
+
+## 📅 DAY 8 — LAUNCH + RETARGETING ACTIVATION
 
 (Calendar reminder you set on Day 1.)
 
-By now you'll have ~7 days of cold traffic data. Retargeting audiences should be populated.
+By now the report is live (or the Ghost Elite direct-enquiry phase starts). Retargeting audiences should be populated.
 
 1. [ ] Verify retargeting audience sizes:
    - Meta "Visited page" audience > 200 users
    - LinkedIn matched audience > 300 (LinkedIn needs more)
    - If audiences are too small, retargeting will be expensive — note this and consider extending Week 1 cold by 2-3 days before launching retargeting
-2. [ ] Build retargeting campaigns per brief Section 6:
+2. [ ] Pause or archive Week 1 hype-only ads where the brief says to switch
+3. [ ] Activate the Week 2 launch ads:
+   - [ ] Use **Hook 3 / content-active** assets only
+   - [ ] Use direct CTAs from the brief (`Read the report`, `Get the report`, `Commission a mandate`, `Brief our experts`)
+   - [ ] Point to the live report page or Ghost Elite enquiry page
+4. [ ] Build retargeting campaigns per brief Section 6:
    - Budget: $[from brief, total $100 minimum]
    - Audiences: [from brief Section 6]
    - Ads: use retargeting-specific assets from `assets/` (concepts tagged as retargeting in visual-concepts.md)
    - Destination URL: use retargeting UTMs from table above
-3. [ ] Launch all retargeting campaigns
-4. [ ] Verify they're spending within 4 hours of activation
+   - [ ] For off-the-shelf campaigns: launch the Ghost Elite cross-sell retargeting layer if the brief included it
+5. [ ] Launch all retargeting campaigns
+6. [ ] Verify they're spending within 4 hours of activation
 
 ---
 
@@ -189,13 +224,15 @@ By now you'll have ~7 days of cold traffic data. Retargeting audiences should be
 
 **Activate by Day 5 if ANY of these:**
 - CTR below [from brief] on all platforms simultaneously
-- Zero report page visits after $[from brief] spent
+- Zero waitlist signups after $[from brief] spent in Week 1
 - CPC exceeding $[from brief] with no improvement
+- For Ghost Elite: zero qualified enquiries after $[from brief] spent
 
 **Protocol:**
 - Creative failing → swap to Hook [X] (from brief Section 0.3), relaunch in 24hr
-- Landing page failing → switch to lead-gen form objective, capture email instead
+- Landing page failing → fix the waitlist / enquiry flow before adding spend
 - Platform CPC unworkable → cut that platform, reallocate to highest-ROI platform
+- Week 2 direct conversion failing → switch to capture-first mode and activate the Ghost Elite cross-sell layer early
 - All platforms failing → stop paid, redirect remaining budget to organic amplification
 
 **Don't burn $500 on zero signal.** Pulling spend early is not failure.
@@ -217,7 +254,7 @@ Once campaign is done:
 
 ## Step 4 — Update pipeline
 
-Append: `[date] | [slug] | launch checklist ready | publishing window: [start]-[end]`
+Append: `[date] | [slug] | launch checklist ready | [product] | publishing window: [start]-[end]`
 
 ## Step 5 — Hand off
 
@@ -225,6 +262,8 @@ Append: `[date] | [slug] | launch checklist ready | publishing window: [start]-[
 ✅ Launch checklist: data/proposals/[slug]/launch-checklist.md
 
 This is your operational playbook. Total time to launch is ~60-90 minutes if assets and pixels are ready. Critical pre-flight items at the top — especially OG meta tags.
+
+Remember: Week 1 is hype-only. Day 8 is the switch to direct launch ads + retargeting.
 
 When ads have been live 3-7 days, come back and type /review-ads.
 ```

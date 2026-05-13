@@ -6,13 +6,57 @@ Hi Shreyanshi. This folder is your AI marketing team for **Ghost Research**, the
 
 ## About the brand (pre-loaded — Claude already knows this)
 
-**Ghost Research** is positioned as a credentialed research institution where AI precision meets human expertise — powered by Caspr.ai, with every report expert-vetted. Reports sell at ~$500. Custom research is delivered within 24 hours. Target markets: US, Europe, India, Middle East.
+**Ghost Research** is a credentialed research institution where AI precision meets human expertise — powered by Caspr.ai, with every report expert-vetted. **Founded by Joy Sharma** (ex-McKinsey, based in Dubai) — founder POV is a usable angle on LinkedIn. Target markets: US, Europe, India, Middle East.
 
-**Brand voice** (every ad must respect):
-- ✅ Use: precise, authoritative, evidence-based, expert-verified, AI-native, depth, insight, strategic
-- ❌ Never use: game-changing, revolutionary, disrupting, unlock, supercharge — anything that sounds like a SaaS growth hack
+### Two product lines (both in scope for marketing)
 
-**Visual identity** (every ad must respect):
+| Product | Description | Typical funnel | Default working price |
+|---|---|---|---|
+| **Caspr. Self-Serve (off-the-shelf reports)** | Published research downloads, on-demand. The default product this pipeline markets. | Ad → report page → direct purchase | ~$500 (working benchmark) |
+| **Ghost Elite (custom mandates)** | Bespoke research delivered in 24 hours. Mission-critical, often six-figure decisions. | Ad → enquiry form → human contact → custom scope → delivery | Custom (much higher) |
+
+When you run `/make-proposal`, Claude asks which product the campaign is for. **By default, off-the-shelf campaigns also cross-sell Ghost Elite in Week 2 retargeting** — engaged prospects who didn't buy the report are exactly the audience for custom work.
+
+### What makes Ghost Research credible (use these in ad copy)
+
+- **1M+ curated sources** — government databases, verified trade journals, financial filings. Caspr does NOT scrape the open web indiscriminately.
+- **Transparent citation** — every claim in every report is sourced. Anti-"black box" positioning.
+- **Weeks → minutes** — traditional agencies take weeks; Caspr synthesizes in minutes. Ghost Elite delivers in 24 hours.
+- **Human-vetted / expert-validated** — every report passes through a subject matter expert with 10+ years of domain experience before delivery.
+- **Predictive, not lagging** — moves the buyer from "what happened last quarter" to "what will happen next."
+
+### Target buyer (use this language in targeting + creative)
+
+The site calls these buyers "Prosumers." Don't use that word in ads — too jargon-y — but target them:
+
+- **Investment Analysts** — PE/M&A due diligence, market sizing for deal flow
+- **Strategy Consultants** — partner-level and senior consultants at boutiques + Big-4 alumni shops
+- **Corporate decision-makers** — VPs, Directors, Heads-of, C-suite, founders making market-entry / competitive / regulatory decisions
+- **Investment Professionals** — IB, equity research, hedge funds
+
+Geography: US / Europe / India / Middle East — weight by topic, not region. (No structural ME upweight even though the CEO is based there.)
+
+### Sector coverage (much broader than "just AI")
+
+Topic research and proposals should fish across all of these — not just AI-native verticals:
+
+- Logistics, global supply chain, real estate M&A
+- FinTech, investment banking, private equity due diligence
+- AI adoption curves, SaaS growth forecasts, telecom infrastructure
+- Healthcare regulatory shifts, medical device adoption, pharma
+- Energy / commodity volatility, sustainable sourcing
+- E-commerce growth, CPG innovation, retail strategy
+- Defense, climate, geopolitics where relevant
+
+**AI-native synthesis** (multi-source pattern detection that's hard for a human to do manually) is a **preference**, not a filter. A great real-estate-M&A topic is still a great Ghost topic even if the synthesis isn't AI-flavored.
+
+### Brand voice (every ad must respect)
+
+- ✅ Use: precise, authoritative, evidence-based, expert-verified, human-vetted, transparent citation, AI-native, depth, insight, strategic, **institutional-grade**, **boardroom-ready**, **weeks to minutes**, **mission-critical**
+- ❌ Never use: game-changing, revolutionary, disrupting, unlock, supercharge — anything that sounds like a SaaS growth hack. Also avoid internal jargon like "Prosumers" or "calibrated strategic instrument" in actual ad copy.
+
+### Visual identity (every ad must respect)
+
 - Primary red `#EF4444` for CTAs and accents (one focal point per frame)
 - Deep indigo / navy backgrounds (`#181650` → `#06062D` gradient)
 - Light backgrounds: `#F8F8FF`, `#F1F3FF`
@@ -22,14 +66,26 @@ Hi Shreyanshi. This folder is your AI marketing team for **Ghost Research**, the
 
 ---
 
+## 🔒 Hard structural rule for every campaign
+
+**Week 1 = hype only. The report is NOT yet published.** Ads can talk about the *question*, the *problem*, the *category*, the *audience* — but cannot quote, excerpt, chart, or visually preview anything from inside the report. The report does not exist publicly yet.
+
+**End of Week 1 = publish day.**
+
+**Week 2 = ads can use actual report content.** Headline findings, charts, expert quotes, specific stats — all in scope from Day 8 onward.
+
+This is non-negotiable. It's baked into `/make-proposal` (the calendar), `/design-ads` (the visual concepts), and `/write-prompts` (the generation prompts). Don't break it — Week 1 ads that pretend to quote a not-yet-published report damage credibility for a brand whose entire moat is "expert-vetted."
+
+---
+
 ## What this system does
 
 Every Ghost Research report runs through this loop:
 
-1. **Researches** the market and finds report topics worth ~$500 to your buyer
-2. **Scores** them by Ghost brand fit + market potential
-3. **Writes the campaign brief** — your existing skill, locked to a $500 hard budget cap, 2-week structure, dynamically-selected platforms (IG / X / Facebook / LinkedIn), feasibility math, day-by-day calendar, full copy vault, KPI dashboard, and a kill switch
-4. **Designs ad concepts** — expands the brief's 3 hooks into 8–12 Ghost-branded visual concepts (no robots, deep indigo grade, real professionals with data)
+1. **Researches** the market and finds report topics worth selling to your buyer
+2. **Scores** them by Ghost brand fit + market potential (off-the-shelf OR Ghost Elite suitability)
+3. **Writes the campaign brief** — your existing skill, locked to a $500 hard budget cap, 2-week structure (Week 1 hype / Week 2 reveal), dynamically-selected platforms (IG / X / Facebook / LinkedIn), feasibility math, day-by-day calendar, full copy vault, KPI dashboard, and a kill switch
+4. **Designs ad concepts** — expands the brief's 3 hooks into 8–12 Ghost-branded visual concepts (no robots, deep indigo grade, real professionals with data), split between Week 1 hype-safe concepts and Week 2 content-revealing concepts
 5. **Writes generation prompts** — ready-to-paste Veo 3 + nanobanana + ElevenLabs prompts that bake in Ghost brand rules
 6. **Preps the launch** — pre-flight checklist (the critical OG meta tag fix, pixels, audiences, UTMs) and click-by-click Ads Manager guide
 7. **Reviews performance** — pulls live data via your Supermetrics integration, compares to brief targets
@@ -88,15 +144,16 @@ You can open any file in Notepad / Word / any editor.
 ## The full pipeline visualized
 
 ```
-   /research-topics  ──▶  8-12 candidates (Ghost-publishable, AI-native, B2B)
+   /research-topics  ──▶  8-12 candidates (off-the-shelf + Ghost Elite-fit, B2B)
         ↓
    /score-topics     ──▶  ranked by Ghost brand fit + market potential
         ↓
-   👋 PAUSE — confirm which topic, give publish date + geography
+   👋 PAUSE — confirm which topic, which product line, publish date, geography
         ↓
-   /make-proposal    ──▶  full 2-week $500 brief: hooks, day-by-day, copy, KPIs, kill switch
+   /make-proposal    ──▶  full 2-week brief: hooks, day-by-day, copy, KPIs, kill switch
+                          Week 1 = hype only | Week 2 = report content live
         ↓
-   /design-ads       ──▶  8-12 Ghost-branded visual concepts (no robots, deep indigo)
+   /design-ads       ──▶  8-12 Ghost-branded concepts split into hype-safe + content-live
         ↓
    /write-prompts    ──▶  Veo 3 + nanobanana + ElevenLabs prompts
         ↓
@@ -136,9 +193,11 @@ When `/decide-action` triggers the **Kill Switch** (from the brief's Section 10)
 
 ---
 
-## A reminder: $500 hard cap
+## A reminder: $500 hard cap (for off-the-shelf campaigns)
 
-Every campaign is math'd against $500 total spend. Not negotiable. If you want to scale a winner after the 2 weeks, that's a new campaign decision — make it deliberately, with fresh feasibility math, not by quietly raising budgets in Ads Manager.
+Every off-the-shelf report campaign is math'd against $500 total spend. Not negotiable. If you want to scale a winner after the 2 weeks, that's a new campaign decision — make it deliberately, with fresh feasibility math, not by quietly raising budgets in Ads Manager.
+
+**Ghost Elite campaigns may need a different budget** — they're lead-gen, not direct purchase, and the unit economics support more spend per lead. `/make-proposal` will surface this when you choose Ghost Elite as the product line.
 
 ---
 
@@ -157,4 +216,4 @@ Claude uses the `/schedule` system to make those recurring.
 
 Type `/ghost` and Claude will run the full pipeline from "nothing" to "ready-to-launch campaign" in about 10-15 minutes of automated work. Then ~3-4 hours of manual asset generation + Ads Manager setup before the campaign goes live.
 
-Or, if you already have a specific report in mind, just type `/make-proposal` and answer the 5 input questions.
+Or, if you already have a specific report in mind, just type `/make-proposal` and answer the input questions.
