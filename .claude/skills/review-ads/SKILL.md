@@ -1,6 +1,6 @@
 ---
 name: review-ads
-description: Pull live ad performance via Supermetrics MCP for a Ghost Research campaign and compare against the brief's KPI Dashboard (Section 8) and Kill Switch thresholds (Section 10). Saves a snapshot tagged HOT/WARM/COLD per the brief's demand classification. Use when the user wants to check performance, says "how are the ads doing", "review the campaign", "/review-ads".
+description: Pull live ad performance via Supermetrics MCP for a Ghost Research campaign and compare against the brief's KPI Dashboard (Section 8) and Kill Switch thresholds (Section 10). Supports off-the-shelf report funnels and Ghost Elite lead-gen funnels, and respects the Week 1 hype / Week 2 launch split. Use when the user wants to check performance, says "how are the ads doing", "review the campaign", "/review-ads".
 ---
 
 # Analytics Review Agent — Ghost Research
@@ -16,7 +16,8 @@ Your job: pull real performance data for the live campaign, compare against the 
 ## Step 2 — Read the brief's KPI targets
 
 Open `data/proposals/<slug>/campaign-brief.md`. Extract:
-- **Feasibility math** (Section 0) — expected purchases, expected CPA, expected ROAS
+- **Product line** (off-the-shelf vs Ghost Elite)
+- **Feasibility math** (Section 0) — expected purchases or qualified enquiries, expected CPA/CPE, expected ROAS
 - **Demand classification** (Section 0.1) — HOT / WARM / COLD (changes how aggressively to read signal)
 - **Per-platform KPI tables** (Section 4)
 - **Master KPI Dashboard** (Section 8) — the 3 numbers that matter most
@@ -39,8 +40,13 @@ Use the Supermetrics tools. For each platform listed in the brief's Section 2.1:
 - Impressions, Reach, Frequency
 - Clicks, CTR (link clicks specifically, not all clicks)
 - CPM, CPC, Spend
-- Conversions: `page_view` (report page), `initiate_checkout`, `purchase`
-- Cost per conversion (cost per purchase)
+- Conversions:
+  - `waitlist_signup` (Week 1 off-the-shelf primary event)
+  - `page_view`
+  - `initiate_checkout`
+  - `purchase`
+  - `lead_submission` (Ghost Elite primary event)
+- Cost per conversion (cost per purchase / cost per enquiry / cost per waitlist signup as relevant)
 - For video ads: video view percentages (25%, 50%, 75%, 100%)
 
 Filter to ads where ad name contains `[slug]`.
@@ -63,7 +69,7 @@ For COLD classification campaigns, give 30% margin — building demand from cold
 Explicitly check Section 10 conditions:
 
 - [ ] **CTR check:** is CTR below brief threshold on ALL platforms simultaneously?
-- [ ] **Page visit check:** zero report page visits after $[brief threshold] spent?
+- [ ] **Week 1 signup / lead check:** zero waitlist signups or zero qualified enquiries after $[brief threshold] spent?
 - [ ] **CPC check:** any platform CPC exceeding brief threshold with no improvement trend?
 - [ ] **Days elapsed:** is campaign at Day 5+?
 
@@ -78,10 +84,11 @@ Save to `data/proposals/<slug>/analytics/<YYYY-MM-DD>.md`:
 slug: [slug]
 date: [YYYY-MM-DD]
 period: "[start] to [end]"
+product: [off-the-shelf | Ghost Elite]
 days_live: [N]
 days_remaining: [14 - N]
 total_spend: $[X]
-total_budget: $500
+total_budget: $[from brief]
 budget_consumed_pct: [X]%
 demand_class: [HOT/WARM/COLD from brief]
 kill_switch: [active / not-active]
@@ -97,19 +104,20 @@ status: snapshot
 
 | Metric | Actual | Brief target | Status |
 |---|---|---|---|
-| Total spend | $[X] of $500 | $[X] expected by day [N] | 🟢/🟡/🔴 |
+| Total spend | $[X] of $[budget] | $[X] expected by day [N] | 🟢/🟡/🔴 |
 | Total clicks | [N] | [from brief Section 0] | 🟢/🟡/🔴 |
+| Week 1 waitlist signups | [N] | [from brief Section 8] | 🟢/🟡/🔴 |
 | Report page visits | [N] | [from brief Section 8] | 🟢/🟡/🔴 |
-| Purchases | [N] | [from brief Section 0] | 🟢/🟡/🔴 |
+| Purchases / qualified enquiries | [N] | [from brief Section 0] | 🟢/🟡/🔴 |
 | Revenue | $[X] | $[X] | 🟢/🟡/🔴 |
-| **Cost per purchase** | $[X] | $[X] from brief | 🟢/🟡/🔴 |
+| **Cost per purchase / enquiry** | $[X] | $[X] from brief | 🟢/🟡/🔴 |
 | **Blended CTR** | [X]% | [X]% from brief | 🟢/🟡/🔴 |
 | **ROAS** | [X]× | [X]× from brief | 🟢/🟡/🔴 |
 
 ## 🚨 Kill Switch check
 
 - CTR below brief threshold on ALL platforms? [Yes/No]
-- Zero report page visits after brief threshold spend? [Yes/No]
+- Zero waitlist signups / qualified enquiries after brief threshold spend? [Yes/No]
 - Any platform CPC exceeding brief threshold? [Yes/No — name platform if yes]
 - Days elapsed ≥ 5? [Yes/No]
 
@@ -118,7 +126,7 @@ status: snapshot
 ## 📈 Per-platform breakdown
 
 ### [Platform 1] — $[spend] of $[budgeted]
-| Ad | Format | Impressions | CTR | CPC | CPL | Purchases | Verdict |
+| Ad | Format | Impressions | CTR | CPC | Cost / conversion | Purchases / leads | Verdict |
 |---|---|---|---|---|---|---|---|
 | [name] | | | | | | | 🟢/🟡/🔴 |
 
@@ -135,9 +143,11 @@ status: snapshot
 ## 🔍 Funnel diagnosis
 
 - Impressions → Clicks: [X]% (CTR)
-- Clicks → Page visits: [X]% (clickthrough quality)
-- Page visits → Initiate checkout: [X]%
-- Initiate checkout → Purchase: [X]%
+- Clicks → Landing page visits: [X]% (clickthrough quality)
+- Landing page visits → Waitlist / enquiry: [X]%
+- Landing page visits → Initiate checkout: [X]% (off-the-shelf only)
+- Initiate checkout → Purchase: [X]% (off-the-shelf only)
+- Retargeting → Ghost Elite enquiry: [X]% (if cross-sell layer active)
 
 **Biggest leak:** [stage] — [why this is the weak link, and whether it's an ad problem or a landing page problem]
 
@@ -155,7 +165,7 @@ Days remaining: [14 - N]. Budget remaining: $[X].
 
 ## Step 7 — Update pipeline
 
-Append: `[date] | [slug] | reviewed | day [N]/14 | spent $[X] | purchases [N] | ROAS [X]x`
+Append: `[date] | [slug] | reviewed | [product] | day [N]/14 | spent $[X] | purchases/leads [N] | ROAS [X]x`
 
 ## Step 8 — Hand off
 
@@ -176,6 +186,7 @@ Next step: /decide-action — read this snapshot and recommend SCALE / HOLD / RE
 - **Only report real data.** If Supermetrics returns nothing or fails, tell the user — never fabricate.
 - **Always compare to the brief's targets first**, then to industry benchmarks as a secondary anchor. The brief is the contract; industry averages are just context.
 - **If campaign is at Day < 3, warn the user** that data is too early for confident calls. Day 3-5 is when signal starts to mean something.
-- **If total spend < $80, warn explicitly** — the brief's $500 cap means meaningful signal needs at least 15-20% of budget consumed before reading too much into it.
+- **If total spend is below the brief's own minimum signal threshold, warn explicitly** — meaningful reads need enough spend for the product line.
 - **Always note the date range explicitly** so the user knows what window they're looking at.
 - **For HOT campaigns, be aggressive.** For COLD campaigns, be patient. The classification in the brief tells you which lens to apply.
+- **Respect the Week 1 / Week 2 split when reading results.** Weak Week 1 usually means the hook/problem framing is off; weak Week 2 after strong Week 1 often means the landing page, offer, or report itself is the bottleneck.
