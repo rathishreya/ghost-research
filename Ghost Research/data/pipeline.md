@@ -4,7 +4,7 @@ This file tracks every topic and where it is in the pipeline. Updated automatica
 
 ## Stages
 
-`researched` → `scored` → `proposal drafted` → `creatives designed` → `prompts written` → `campaign prepped` → `awaiting publish` → `live` → `reviewed` → `decision [X]`
+`researched` → `scored` → `proposal drafted` → `creatives designed` → `prompts written` → `assets generated` → `campaign prepped` → `awaiting publish` → `live` → `reviewed` → `decision [X]`
 
 ## Active topics
 

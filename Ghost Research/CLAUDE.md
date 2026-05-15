@@ -87,9 +87,10 @@ Every Ghost Research report runs through this loop:
 3. **Writes the campaign brief** — your existing skill, locked to a $500 hard budget cap, 2-week structure (Week 1 hype / Week 2 reveal), dynamically-selected platforms (IG / X / Facebook / LinkedIn), feasibility math, day-by-day calendar, full copy vault, KPI dashboard, and a kill switch
 4. **Designs ad concepts** — expands the brief's 3 hooks into 8–12 Ghost-branded visual concepts (no robots, deep indigo grade, real professionals with data), split between Week 1 hype-safe concepts and Week 2 content-revealing concepts
 5. **Writes generation prompts** — ready-to-paste Veo 3 + nanobanana + ElevenLabs prompts that bake in Ghost brand rules
-6. **Preps the launch** — pre-flight checklist (the critical OG meta tag fix, pixels, audiences, UTMs) and click-by-click Ads Manager guide
-7. **Reviews performance** — pulls live data via your Supermetrics integration, compares to brief targets
-8. **Decides** — SCALE / HOLD / REGENERATE / KILL per ad, applies the brief's Kill Switch when triggered, writes lessons.md so next round learns
+6. **Generates image assets** — runs Pollinations.ai (free FLUX) for photo/scene ads and renders editorial HTML/CSS cards (typography + stat cards) via headless Chromium. No API key required.
+7. **Preps the launch** — pre-flight checklist (the critical OG meta tag fix, pixels, audiences, UTMs) and click-by-click Ads Manager guide
+8. **Reviews performance** — pulls live data via your Supermetrics integration, compares to brief targets
+9. **Decides** — SCALE / HOLD / REGENERATE / KILL per ad, applies the brief's Kill Switch when triggered, writes lessons.md so next round learns
 
 ---
 
@@ -104,7 +105,10 @@ Open this folder in Claude Code, then type any of these:
 | Score the topics you found | `/score-topics` |
 | Write the 2-week campaign brief | `/make-proposal` |
 | Design ad concepts from the brief | `/design-ads` |
-| Write Veo 3 / nanobanana / ElevenLabs prompts | `/write-prompts` |
+| Write generation prompts (pollinations / editorial / animate / animated-html) | `/write-prompts` |
+| Generate image assets (Pollinations + editorial cards) | `/generate-assets` |
+| Generate video assets (Ken-Burns animations + animated HTML) | `/generate-video` |
+| Iterate on a single ad (change something you don't like) | `/edit-ad <id> "instruction"` |
 | Prep technical setup + Ads Manager checklist | `/prep-campaign` |
 | Review how live ads are performing | `/review-ads` |
 | Get a recommendation on what to do next | `/decide-action` |
@@ -118,7 +122,8 @@ Or describe what you want in plain English — Claude will pick the right skill.
 ```
 Ghost research/
 ├── CLAUDE.md                  ← this file
-├── .claude/skills/            ← the 9 agents (don't edit unless tweaking)
+├── .claude/skills/            ← the Ghost agents (don't edit unless tweaking)
+├── scripts/                   ← local automation helpers (e.g. Nanobanana generation)
 └── data/
     ├── opportunities/         ← topics the researcher found, one file each
     ├── proposals/             ← one folder per report:
@@ -157,6 +162,8 @@ You can open any file in Notepad / Word / any editor.
         ↓
    /write-prompts    ──▶  Veo 3 + nanobanana + ElevenLabs prompts
         ↓
+   /generate-assets  ──▶  auto-generates Nanobanana image assets into assets/
+        ↓
    /prep-campaign    ──▶  pre-flight checklist + Ads Manager click-by-click
         ↓
    👋 YOU: generate assets, composite, publish (~3-4 hours of manual work)
@@ -176,12 +183,19 @@ You can open any file in Notepad / Word / any editor.
 | Step | Automatic? |
 |---|---|
 | Research, scoring, campaign brief, ad concepts, prompts, launch checklist, decisions | ✅ Claude does it |
+| Static image generation (Pollinations FLUX) | ✅ Claude does it — free, no API key |
+| Editorial HTML/CSS card rendering | ✅ Claude does it — free, headless Chromium |
+| Short video generation (Ken-Burns animation on stills) | ✅ Claude does it — free, bundled ffmpeg |
+| Animated kinetic-typography spots | ✅ Claude does it — free, Playwright recording |
+| Iterating on an ad you don't like | ✅ Claude does it via `/edit-ad <id> "instruction"` |
 | Pulling ad performance numbers | ✅ Claude does it (via Supermetrics MCP — already connected) |
-| Generating actual videos/images from prompts | ⚠️ You paste prompts into Veo 3 + nanobanana |
-| Compositing final ads (headline + CTA overlay) | ⚠️ You do this in Figma / Canva / Premiere |
+| Photoreal video via Veo 3 (paid Google AI Studio plan) | ⚠️ Optional upgrade; free animations cover most cases |
+| Compositing final headlines + CTA overlays | ⚠️ Optional — only when you want headline text baked into the asset |
 | Publishing ads to Ads Managers | ⚠️ You follow the launch-checklist.md in each platform |
 
-The manual steps can be automated later (separate API integration project). Everything else is autonomous today.
+The whole creative loop is free today — no API keys required. If you upgrade
+your Google AI Studio plan, set `GEMINI_API_KEY` in `.env` and Veo 3 photoreal
+video becomes available via `scripts/gemini_video.py`.
 
 ---
 
@@ -214,6 +228,6 @@ Claude uses the `/schedule` system to make those recurring.
 
 ## Getting started right now
 
-Type `/ghost` and Claude will run the full pipeline from "nothing" to "ready-to-launch campaign" in about 10-15 minutes of automated work. Then ~3-4 hours of manual asset generation + Ads Manager setup before the campaign goes live.
+Type `/ghost` and Claude will run the full pipeline from "nothing" to "ready-to-launch campaign with rendered assets" in about 12-18 minutes of automated work. Image generation (Pollinations FLUX + editorial HTML cards) and video generation (Ken-Burns animation + animated HTML spots) all run for free without any API key — first-time setup just needs `pip install -r requirements.txt` if you haven't already.
 
 Or, if you already have a specific report in mind, just type `/make-proposal` and answer the input questions.

@@ -17,7 +17,12 @@ Check `data/proposals/<slug>/assets/`. If it's empty or missing final composited
 
 ```
 ⚠️ Assets folder is empty or incomplete: data/proposals/[slug]/assets/
-Please generate and composite assets using prompts.md first, then re-run /prep-campaign.
+Please generate the remaining assets first:
+- Run `/generate-assets` for Nanobanana image concepts if your API key is configured
+- Generate any Veo / ElevenLabs assets manually
+- Composite the final ads
+
+Then re-run /prep-campaign.
 ```
 
 Then stop.
