@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python scripts/render_editorial.py --slug cfo-defense-pack-q2-2026 --concept 07 --concept 13 --overwrite)"
+    ]
+  }
+}

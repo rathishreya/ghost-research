@@ -17,6 +17,74 @@ visual_law: "Every ad = Pollinations cinematic photo + dark scrim + Oranienbaum 
 
 ---
 
+## Concept 59 — Bound research report on table (NEW unique base for C07)
+
+**Tool:** pollinations
+**Lane:** photo
+**Aspect:** 1:1
+**Suggested filename:** `P9-bound-report.jpg`
+**Maps to:** source for composite C07 (REPLACES P1 in C07 to kill the C1-C7 duplicate)
+
+### Generation prompt
+```
+Cinematic editorial overhead-angle close-up photograph of a thick bound institutional research report with embossed dark navy leather cover and red ribbon bookmark, placed precisely on a polished black walnut desk surface alongside a vintage Montblanc fountain pen, a brass-and-leather coaster, and the soft penumbra of a banker's desk lamp at frame edge, single dramatic warm key light from camera-right at low angle creating long shadows across the report cover, deep indigo and warm tungsten color grade, generous negative space upper-right for headline overlay, premium consulting-firm aesthetic similar to Bloomberg Originals documentary cinematography, no people in frame, no readable text on the report cover, no logos, no watermarks. Photoreal, shot on Phase One IQ4 medium-format with 80mm prime, very shallow depth of field focused on the ribbon bookmark, 1:1 square framing, photographer style of Annie Leibovitz for Bloomberg Markets cover, organic film grain, no plasticky surfaces.
+
+NEGATIVE: no robots, no sci-fi HUD, no glowing screens, no neon, no holograms, no AI-uncanny features, no people, no faces, no smartphones, no laptops, no text in image, no logos, no watermarks, no waxy plastic surfaces.
+```
+
+---
+
+## Concept 60 — Late-night brass lamp + chair (NEW unique base for C13)
+
+**Tool:** pollinations
+**Lane:** photo
+**Aspect:** 1:1
+**Suggested filename:** `P10-night-lamp-chair.jpg`
+**Maps to:** source for composite C13 (REPLACES P4 to kill the C3-C13 duplicate)
+
+### Generation prompt
+```
+Cinematic editorial photograph of a single brass-and-green-shade banker's lamp lit on a side table beside an empty leather Chesterfield wingback chair in a dark wood-panelled private office at midnight, a closed leather portfolio binder resting on the seat of the chair, a stack of bound research documents on the side table behind the lamp, a tall window beyond showing a high-rise financial district skyline at deep blue hour with single distant lit windows, deep indigo and warm tungsten color grade with strong chiaroscuro, premium private-office aesthetic, no people in frame, photoreal, shot on Phase One IQ4 medium-format with 50mm prime, deep depth of field, 1:1 square framing, photographer style of Gregory Crewdson cinematic stills, dramatic restrained composition, generous negative space upper half for headline overlay. No readable text, no logos, no watermarks.
+
+NEGATIVE: no robots, no sci-fi HUD, no glowing screens, no neon, no AI-uncanny features, no people, no faces, no fist-bumps, no smartphones, no laptops, no text in image, no logos, no watermarks.
+```
+
+---
+
+## Concept 61 — Pen stroke macro, no hand (NEW unique base for C12, fixes hand-pen glitch)
+
+**Tool:** pollinations
+**Lane:** photo
+**Aspect:** 9:16
+**Suggested filename:** `P12-pen-stroke.jpg`
+**Maps to:** source for animate C12 (REPLACES P3, no hand visible so no glitch)
+
+### Generation prompt
+```
+Extreme close-up macro photograph of a vintage Montblanc Meisterstück fountain pen lying diagonally across a printed financial document, the pen tip in sharp focus on a hand-written signature line at the edge of the document, single warm key light from camera-right creating soft shadows across the paper grain, deep indigo and warm tungsten color grade, organic paper texture visible, premium executive-desk aesthetic, no hand, no human elements in frame, photoreal, shot on Phase One IQ4 with 100mm macro lens, extremely shallow depth of field focused on the pen tip, vertical 9:16 framing, photographer style of Bloomberg Markets product photography, generous negative space upper-third for headline overlay. No readable text on document, no logos, no watermarks.
+
+NEGATIVE: no robots, no sci-fi HUD, no glowing nodes, no neon, no AI-uncanny features, no hands, no fingers, no people, no smartphones, no laptops, no text in image, no logos, no watermarks.
+```
+
+---
+
+## Concept 62 — Hero finale, view from behind (NEW unique base for C14)
+
+**Tool:** pollinations
+**Lane:** photo
+**Aspect:** 9:16
+**Suggested filename:** `P14-hero-back.jpg`
+**Maps to:** source for composite C14 (REPLACES P8 to kill the C8-C14 duplicate)
+
+### Generation prompt
+```
+Cinematic editorial photograph from behind looking past the back of a senior chief financial officer in his fifties standing at the head of a dark wood-panelled corporate boardroom at midnight, framed in silhouette against a floor-to-ceiling window showing a high-rise financial district skyline at blue hour, his back to camera, hands clasped behind back, polished walnut conference table receding into the foreground, single bound research document and a brass desk lamp warm-glowing at the far end of the table, deep indigo and near-black color grade with strong chiaroscuro lighting, premium signature-portrait aesthetic similar to The Hollywood Reporter mogul covers but shot from behind for decisive-moment framing, photoreal, shot on Arri Alexa Mini with 35mm prime, slight wide angle, deep depth of field, vertical 9:16 framing, photographer style of Annie Leibovitz Vanity Fair cover work, generous negative space lower-third for headline overlay. No readable text, no logos, no watermarks.
+
+NEGATIVE: no robots, no sci-fi HUD, no glowing screens, no neon, no holograms, no AI-uncanny faces, no waxy skin, no perfect-smile portraits, no smiling-at-camera, no fist bumps, no text in image, no logos, no watermarks, no front-facing portrait.
+```
+
+---
+
 ## Concept 51 — Dawn boardroom solo prep (photo base)
 
 **Tool:** pollinations
@@ -406,7 +474,7 @@ eyebrow + Oranienbaum headline + Manrope sub + red CTA pill with arrow.
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1080px;height:1080px;overflow:hidden;font-family:Manrope,sans-serif;color:#F8F8FF;-webkit-font-smoothing:antialiased}
-body{position:relative;background:#000;background-image:linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.55) 42%,rgba(0,0,0,.95) 80%,rgba(0,0,0,.99) 100%),url("GHOST_ASSET:P1-dawn-boardroom.jpg");background-size:cover;background-position:center}
+body{position:relative;background:#000;background-image:linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.55) 42%,rgba(0,0,0,.95) 80%,rgba(0,0,0,.99) 100%),url("GHOST_ASSET:P9-bound-report.jpg");background-size:cover;background-position:center}
 .ad{width:100%;height:100%;padding:78px 84px;display:flex;flex-direction:column;justify-content:space-between;position:relative;z-index:2}
 .top{display:flex;justify-content:space-between;align-items:flex-start}
 .wm{font-family:Oranienbaum,serif;font-size:24px;color:rgba(248,248,255,.96)}.wm i{color:#EF4444;font-style:normal}
@@ -622,7 +690,7 @@ body{position:relative;background:#000;background-image:linear-gradient(180deg,r
 **Aspect:** 9:16
 **Duration:** 8
 **Motion:** pan-right
-**Source image:** `P3-sensitivity-chart.jpg`
+**Source image:** `P12-pen-stroke.jpg`
 **Suggested filename:** `C12-w2d12-pan-motion.mp4`
 **On-screen eyebrow:** Now live · $500
 **On-screen headline:** Enterprise AI. Audited.
@@ -653,7 +721,7 @@ gentle fades.
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1080px;height:1080px;overflow:hidden;font-family:Manrope,sans-serif;color:#F8F8FF;-webkit-font-smoothing:antialiased}
-body{position:relative;background:#000;background-image:linear-gradient(180deg,rgba(0,0,0,.20) 0%,rgba(0,0,0,.55) 45%,rgba(0,0,0,.95) 85%,rgba(0,0,0,.99) 100%),url("GHOST_ASSET:P4-empty-boardroom.jpg");background-size:cover;background-position:center}
+body{position:relative;background:#000;background-image:linear-gradient(180deg,rgba(0,0,0,.20) 0%,rgba(0,0,0,.55) 45%,rgba(0,0,0,.95) 85%,rgba(0,0,0,.99) 100%),url("GHOST_ASSET:P10-night-lamp-chair.jpg");background-size:cover;background-position:center}
 .ad{width:100%;height:100%;padding:78px 84px;display:flex;flex-direction:column;justify-content:space-between;position:relative;z-index:2}
 .top{display:flex;justify-content:space-between;align-items:flex-start}
 .wm{font-family:Oranienbaum,serif;font-size:24px;color:rgba(248,248,255,.96)}.wm i{color:#EF4444;font-style:normal}
@@ -696,7 +764,7 @@ body{position:relative;background:#000;background-image:linear-gradient(180deg,r
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1080px;height:1920px;overflow:hidden;font-family:Manrope,sans-serif;color:#F8F8FF;-webkit-font-smoothing:antialiased}
-body{position:relative;background:#000;background-image:linear-gradient(180deg,rgba(0,0,0,.20) 0%,rgba(0,0,0,.55) 42%,rgba(0,0,0,.94) 80%,rgba(0,0,0,.99) 100%),url("GHOST_ASSET:P8-hero-finale.jpg");background-size:cover;background-position:center}
+body{position:relative;background:#000;background-image:linear-gradient(180deg,rgba(0,0,0,.20) 0%,rgba(0,0,0,.55) 42%,rgba(0,0,0,.94) 80%,rgba(0,0,0,.99) 100%),url("GHOST_ASSET:P14-hero-back.jpg");background-size:cover;background-position:center}
 .ad{width:100%;height:100%;padding:110px 88px 96px;display:flex;flex-direction:column;justify-content:space-between;position:relative;z-index:2}
 .top{display:flex;justify-content:space-between;align-items:flex-start}
 .wm{font-family:Oranienbaum,serif;font-size:28px;color:rgba(248,248,255,.96)}.wm i{color:#EF4444;font-style:normal}
@@ -722,3 +790,80 @@ body{position:relative;background:#000;background-image:linear-gradient(180deg,r
 </div>
 </div></body></html>
 ```
+
+
+---
+
+## Concept 15 — VFX SUSPENSE REVEAL (10s, photo-bg, typewriter question + count-up + cross-dissolve)
+
+**Tool:** animated-html
+**Aspect:** 9:16
+**Duration:** 10
+**Suggested filename:** `C15-w2d10-suspense-reveal.mp4`
+**Maps to:** Day 10, Week 2 · Meta Reels conversion + LinkedIn Video (the engaging VFX one)
+
+### Generation prompt
+```html
+<!doctype html><html><head><meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:Manrope,sans-serif;color:#F8F8FF;-webkit-font-smoothing:antialiased;background:#000}
+.stage{position:absolute;inset:0;overflow:hidden}
+/* SCENE 1 — black with typewriter question, 0-3.5s */
+.s1{position:absolute;inset:0;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:0 88px;opacity:1;animation:s1out .8s ease 3.5s forwards}
+.s1 .wm{font-family:Oranienbaum,serif;font-size:28px;color:rgba(248,248,255,.85);margin-bottom:60px;opacity:0;animation:rise .8s ease .2s forwards}
+.s1 .wm i{color:#EF4444;font-style:normal}
+.s1 .ask{font-family:Manrope,sans-serif;font-size:24px;letter-spacing:.04em;color:rgba(248,248,255,.6);font-weight:500;margin-bottom:30px;opacity:0;animation:rise .8s ease 1.0s forwards}
+.s1 .q{font-family:Oranienbaum,serif;font-size:80px;line-height:1.08;color:#F8F8FF;text-align:center;max-width:14ch;overflow:hidden;white-space:nowrap;border-right:3px solid #EF4444;width:0;animation:type 1.6s steps(34,end) 1.6s forwards, blink 0.7s step-end 1.6s 5}
+/* SCENE 2 — photo of empty boardroom Ken-Burns + red text, 3.5-6.5s */
+.s2{position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(0,0,0,.20) 0%,rgba(0,0,0,.50) 38%,rgba(0,0,0,.92) 80%,rgba(0,0,0,.99) 100%),url("GHOST_ASSET:P4-empty-boardroom.jpg");background-size:cover;background-position:center;transform:scale(1.05);opacity:0;animation:s2in 1.0s ease 3.5s forwards, s2zoom 4s linear 3.5s forwards, s2out .8s ease 6.5s forwards}
+.s2 .pull{position:absolute;left:88px;right:88px;bottom:200px;font-family:Oranienbaum,serif;font-size:84px;line-height:1.04;color:#EF4444;font-style:italic;text-shadow:0 4px 28px rgba(0,0,0,.7);opacity:0;animation:rise 1.0s ease 4.2s forwards}
+.s2 .meta{position:absolute;left:88px;bottom:120px;font-size:14px;letter-spacing:.30em;text-transform:uppercase;color:rgba(248,248,255,.55);font-weight:700;opacity:0;animation:rise .8s ease 5.0s forwards}
+/* SCENE 3 — silhouette window + huge number, 6.5-10s */
+.s3{position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(0,0,0,.10) 0%,rgba(0,0,0,.40) 35%,rgba(0,0,0,.88) 75%,rgba(0,0,0,.99) 100%),url("GHOST_ASSET:P2-window-executive.jpg");background-size:cover;background-position:center;opacity:0;animation:s3in 1.0s ease 6.5s forwards}
+.s3 .frame{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:0 88px;text-align:center}
+.s3 .label{font-size:13px;letter-spacing:.30em;text-transform:uppercase;color:#EF4444;font-weight:800;margin-bottom:24px;opacity:0;animation:rise .8s ease 7.0s forwards}
+.s3 .num{font-family:Oranienbaum,serif;font-size:400px;line-height:.84;letter-spacing:-.045em;color:#F8F8FF;text-shadow:0 0 80px rgba(239,68,68,.40);opacity:0;transform:scale(.92);animation:numrise 1.0s cubic-bezier(.2,.7,.2,1) 7.4s forwards, glow 1.6s ease 8.4s forwards}
+.s3 .num .ru{color:#EF4444}
+.s3 .rule{width:0;height:1.5px;background:#EF4444;margin-top:32px;animation:grow .9s ease 8.6s forwards}
+.s3 .ctx{margin-top:24px;font-family:Oranienbaum,serif;font-size:36px;line-height:1.2;color:rgba(248,248,255,.85);max-width:22ch;text-shadow:0 2px 16px rgba(0,0,0,.6);opacity:0;animation:rise .9s ease 9.0s forwards}
+.s3 .cta{position:absolute;bottom:120px;left:50%;transform:translateX(-50%) translateY(10px);font-family:Manrope,sans-serif;font-size:22px;font-weight:800;color:#fff;background:#EF4444;padding:18px 30px;border-radius:4px;box-shadow:0 10px 32px rgba(239,68,68,.40);opacity:0;animation:rise .8s ease 9.3s forwards}
+.s3 .cta b{color:#fff}.s3 .cta::after{content:"  →"}
+/* film grain overlay throughout */
+.grain{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:3px 3px;mix-blend-mode:screen;z-index:99}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes type{from{width:0}to{width:14ch}}
+@keyframes blink{50%{border-color:transparent}}
+@keyframes s1out{to{opacity:0}}
+@keyframes s2in{to{opacity:1}}
+@keyframes s2zoom{to{transform:scale(1.18)}}
+@keyframes s2out{to{opacity:0}}
+@keyframes s3in{to{opacity:1}}
+@keyframes numrise{to{opacity:1;transform:scale(1)}}
+@keyframes glow{0%{text-shadow:0 0 80px rgba(239,68,68,.40)}50%{text-shadow:0 0 140px rgba(239,68,68,.70)}100%{text-shadow:0 0 80px rgba(239,68,68,.40)}}
+@keyframes grow{to{width:120px}}
+</style>
+<script>window.addEventListener("load",()=>setTimeout(()=>window.__GHOST_DONE=true,10000));</script>
+</head><body>
+<div class="stage">
+  <div class="s1"><div class="wm">Ghost Research<i>.</i></div><div class="ask">Your board is about to ask:</div><div class="q">What did the&nbsp;$300B buy?</div></div>
+  <div class="s2"><div class="pull">"Show me the receipts."</div><div class="meta">— Every board chair · Q2 2026</div></div>
+  <div class="s3"><div class="frame"><div class="label">— Average ROI per AI dollar —</div><div class="num">$0.<span class="ru">74</span></div><div class="rule"></div><div class="ctx">Across 1,047 audited enterprise deployments.</div></div><div class="cta">Read the pack — <b>$500</b></div></div>
+  <div class="grain"></div>
+</div>
+</body></html>
+```
+
+---
+
+## Concept 16 — MULTI-SHOT EDITED REELS (8s, 4 photo clips cross-dissolved)
+
+**Tool:** multi-shot-reels
+**Aspect:** 9:16
+**Duration:** 8
+**Suggested filename:** `C16-w2d11-multishot-reels.mp4`
+**Maps to:** Day 11, Week 2 · Meta Reels (alternate to C09)
+**Clips:** `P4-empty-boardroom.jpg`, `P3-sensitivity-chart.jpg`, `P2-window-executive.jpg`, `P8-hero-finale.jpg`
+**Final text frame:** `C16-text-card.html`
+**Note:** Built by `scripts/edit_multishot_reels.py` which uses moviepy + ffmpeg xfade to cross-dissolve between 4 Ken-Burns clips, ending on a typography card.

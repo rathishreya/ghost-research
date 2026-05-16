@@ -173,14 +173,18 @@ def build_text_overlay_png(width: int, height: int, headline: str, sub: str, cta
         font_h = font_e = font_s = font_c = font_b = ImageFont.load_default()
 
     # Lower scrim: gradient from transparent to deep ink so text reads.
-    bar_h = int(height * 0.58)
+    # Stronger ramp so light photos don't bleed through and kill text contrast.
+    bar_h = int(height * 0.62)
     y0 = height - bar_h
     for row in range(bar_h):
         y = y0 + row
-        # ease-in alpha: empty at top, ~93% at bottom
         t = row / max(1, bar_h - 1)
-        a = int(255 * (t ** 1.6) * 0.93)
+        # Steeper curve + higher peak: empty at top, ~99% solid at bottom.
+        a = int(255 * (t ** 1.3) * 0.99)
         draw.line([(0, y), (width, y)], fill=(6, 6, 45, a))
+    # Solid floor: bottom 18% is near-fully opaque so CTA + spec line read on any photo.
+    floor_h = int(height * 0.18)
+    draw.rectangle((0, height - floor_h, width, height), fill=(6, 6, 45, 245))
 
     # Top-left brand mark + thin rule below it.
     margin = int(short_edge * 0.052)
@@ -208,12 +212,13 @@ def build_text_overlay_png(width: int, height: int, headline: str, sub: str, cta
         ytb = draw.textbbox((x, y), eb, font=font_e)
         y = ytb[3] + int(short_edge * 0.018)
 
-    # Headline (Oranienbaum, big, with subtle shadow for legibility over photo).
+    # Headline (Oranienbaum, big, with strong drop shadow for legibility over any photo).
     head_lines = _wrap_to_width(draw, headline.strip(), font_h, inner_w)
     line_gap_h = int(head_size * 0.05)
     for line in head_lines:
-        # subtle drop shadow
-        draw.text((x + 3, y + 3), line, font=font_h, fill=(0, 0, 0, 150))
+        # multi-pass drop shadow: wider soft blur + tight hard shadow
+        for dx, dy, alpha in ((6, 6, 220), (4, 4, 200), (2, 2, 180)):
+            draw.text((x + dx, y + dy), line, font=font_h, fill=(0, 0, 0, alpha))
         draw.text((x, y), line, font=font_h, fill=(248, 248, 255, 255))
         bb = draw.textbbox((x, y), line, font=font_h)
         y = bb[3] + line_gap_h
@@ -229,8 +234,10 @@ def build_text_overlay_png(width: int, height: int, headline: str, sub: str, cta
     sub_lines = _wrap_to_width(draw, sub.strip(), font_s, inner_w)
     line_gap_s = int(sub_size * 0.30)
     for line in sub_lines:
-        draw.text((x + 2, y + 2), line, font=font_s, fill=(0, 0, 0, 130))
-        draw.text((x, y), line, font=font_s, fill=(220, 220, 240, 240))
+        # stronger shadow on sub too
+        for dx, dy, alpha in ((4, 4, 200), (2, 2, 170)):
+            draw.text((x + dx, y + dy), line, font=font_s, fill=(0, 0, 0, alpha))
+        draw.text((x, y), line, font=font_s, fill=(232, 232, 245, 252))
         bb = draw.textbbox((x, y), line, font=font_s)
         y = bb[3] + line_gap_s
     y += int(short_edge * 0.028)
