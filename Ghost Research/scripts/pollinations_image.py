@@ -38,13 +38,17 @@ IMAGE_TOOL_KEYWORDS = (
 )
 
 ASPECT_TO_DIMS = {
-    "1:1":  (1024, 1024),
-    "4:5":  (1024, 1280),
-    "5:4":  (1280, 1024),
-    "9:16": (1080, 1920),
-    "16:9": (1920, 1080),
-    "4:3":  (1280, 960),
-    "3:4":  (960, 1280),
+    # 4K-class: bumped from 1024-1080 baseline to 2048-2160 so source photos
+    # hold up at any zoom level in composites. Pollinations FLUX supports this
+    # range stably; some prompts may downsample under load but most return at
+    # the requested dimensions.
+    "1:1":  (2048, 2048),
+    "4:5":  (2048, 2560),
+    "5:4":  (2560, 2048),
+    "9:16": (2160, 3840),
+    "16:9": (3840, 2160),
+    "4:3":  (2560, 1920),
+    "3:4":  (1920, 2560),
 }
 
 
