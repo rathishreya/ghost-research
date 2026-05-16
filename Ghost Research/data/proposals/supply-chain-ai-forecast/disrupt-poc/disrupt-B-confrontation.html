@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1080px; height: 1920px;
+    background: #F8F8FF;
+    font-family: Manrope, system-ui, sans-serif;
+    color: #06062D;
+    -webkit-font-smoothing: antialiased;
+  }
+  .ad {
+    width: 100%; height: 100%;
+    padding: 96px 78px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .wm { font-family: Oranienbaum, serif; font-size: 28px; color: #06062D; }
+  .wm i { color: #EF4444; font-style: normal; }
+  .tag {
+    font-size: 13px; letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(6,6,45,.52); font-weight: 700; text-align: right;
+  }
+  .center { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .q {
+    font-family: Oranienbaum, serif;
+    font-size: 124px; line-height: 1.02;
+    color: #06062D; letter-spacing: -0.025em;
+    max-width: 14ch;
+  }
+  .q em { color: #EF4444; font-style: italic; }
+  .names {
+    font-size: 26px; line-height: 1.65; font-weight: 400;
+    color: rgba(6,6,45,.62);
+    margin-top: 56px; max-width: 24ch;
+  }
+  .or {
+    font-family: Oranienbaum, serif; font-size: 44px;
+    color: #06062D; margin-top: 32px; max-width: 22ch; line-height: 1.18;
+  }
+  .or .price { color: #EF4444; }
+  .or .arrow { color: #EF4444; margin-left: 6px; }
+  .bottom { display: flex; justify-content: space-between; align-items: center; }
+</style>
+</head>
+<body>
+  <div class="ad">
+    <div class="top">
+      <div class="wm">Ghost Research<i>.</i></div>
+      <div class="tag">Caspr Self-Serve · $500<br/>Drops June 1, 2026</div>
+    </div>
+
+    <div class="center">
+      <h1 class="q">Who <em>actually</em> reviewed the supply-chain assumptions in your Q3 deck?</h1>
+      <p class="names">An EA. Two analysts. The senior who skimmed it on the way to the airport. The vendor who sold you the dashboard. The McKinsey alum you trust who is not, in fact, an SCM.</p>
+      <p class="or">Or thirty-two named SMEs — for <span class="price">$500</span>.<span class="arrow">→</span></p>
+    </div>
+
+    <div class="bottom">
+      <div class="tag" style="text-align:left">Supply-chain forecasting · 2026 Q3</div>
+      <div class="tag">read.ghostresearch.com</div>
+    </div>
+  </div>
+</body>
+</html>

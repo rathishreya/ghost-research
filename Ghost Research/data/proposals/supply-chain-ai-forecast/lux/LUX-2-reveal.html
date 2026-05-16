@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px; height: 1920px; overflow: hidden;
+    font-family: Manrope, system-ui, sans-serif;
+    color: #F8F8FF;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background:
+      radial-gradient(60% 45% at 50% 40%, rgba(24,22,80,0.55) 0%, rgba(6,6,45,0.85) 50%, #000 100%),
+      #000;
+    position: relative;
+  }
+  /* under-hero red bloom */
+  body::before {
+    content: ""; position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 900px; height: 200px;
+    background: radial-gradient(closest-side, rgba(239,68,68,0.22) 0%, rgba(239,68,68,0) 75%);
+    filter: blur(60px); pointer-events: none;
+  }
+  /* film grain */
+  body::after {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 3px 3px; mix-blend-mode: screen; pointer-events: none;
+  }
+  .ad {
+    width: 100%; height: 100%;
+    padding: 110px 88px 96px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; z-index: 2; text-align: center;
+  }
+  .top {
+    display: flex; flex-direction: column; align-items: center; gap: 20px;
+  }
+  .wm {
+    font-family: Oranienbaum, serif; font-size: 30px;
+    color: rgba(248,248,255,0.96);
+  }
+  .wm i { color: #EF4444; font-style: normal; }
+  .pretitle {
+    font-size: 12px; letter-spacing: .32em; text-transform: uppercase;
+    color: rgba(248,248,255,0.50); font-weight: 700;
+  }
+  .center {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 36px;
+  }
+  .number {
+    font-family: Oranienbaum, serif;
+    font-size: 480px; line-height: 0.84;
+    color: #F8F8FF; letter-spacing: -0.045em;
+    text-shadow: 0 0 80px rgba(239,68,68,0.18);
+  }
+  .number .ru { color: #EF4444; }
+  .ruleblock { display: flex; align-items: center; gap: 14px; opacity: 0.85; }
+  .rule { width: 80px; height: 1.5px; background: #EF4444; }
+  .pin {
+    font-size: 11px; letter-spacing: .32em; text-transform: uppercase;
+    color: #EF4444; font-weight: 800;
+  }
+  .body {
+    font-family: Oranienbaum, serif;
+    font-size: 52px; line-height: 1.18; color: #F8F8FF;
+    max-width: 24ch; letter-spacing: -0.005em;
+  }
+  .body em { color: rgba(248,248,255,0.60); font-style: italic; }
+  .bottom {
+    display: flex; flex-direction: column; align-items: center; gap: 22px;
+  }
+  .cta {
+    font-family: Manrope, sans-serif; font-weight: 800; font-size: 22px;
+    color: #F8F8FF; letter-spacing: 0.04em;
+  }
+  .cta .price { color: #EF4444; }
+  .cta::after { content: "  →"; color: #EF4444; font-weight: 500; margin-left: 4px; }
+  .meta {
+    font-size: 12px; letter-spacing: .30em; text-transform: uppercase;
+    color: rgba(248,248,255,0.42); font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <div class="ad">
+    <div class="top">
+      <div class="wm">Ghost Research<i>.</i></div>
+      <div class="pretitle">Caspr · 2026 Q3 Brief</div>
+    </div>
+
+    <div class="center">
+      <div class="number">$47<span class="ru">B</span></div>
+      <div class="ruleblock"><span class="rule"></span><span class="pin">Forecast Lag Tax</span><span class="rule"></span></div>
+      <p class="body">is what supply-chain forecast lag cost U.S. industrials <em>in 2025.</em></p>
+    </div>
+
+    <div class="bottom">
+      <div class="cta">Read the brief — <span class="price">$500</span></div>
+      <div class="meta">Self-serve · 1M+ curated sources · expert-vetted</div>
+    </div>
+  </div>
+</body>
+</html>

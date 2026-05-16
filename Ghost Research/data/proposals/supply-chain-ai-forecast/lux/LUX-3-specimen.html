@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px; height: 1350px; overflow: hidden;
+    font-family: Manrope, system-ui, sans-serif;
+    color: #06062D;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background: #F1F3FF;
+    background-image:
+      radial-gradient(120% 60% at 80% 0%, rgba(24,22,80,0.06) 0%, rgba(24,22,80,0) 60%),
+      radial-gradient(120% 60% at 20% 100%, rgba(239,68,68,0.04) 0%, rgba(239,68,68,0) 60%),
+      #F1F3FF;
+    position: relative;
+  }
+  .ad {
+    width: 100%; height: 100%;
+    padding: 88px 80px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .wm {
+    font-family: Oranienbaum, serif; font-size: 30px;
+    color: #06062D;
+  }
+  .wm i { color: #EF4444; font-style: normal; }
+  .meta {
+    font-size: 12px; letter-spacing: .26em; text-transform: uppercase;
+    color: rgba(6,6,45,0.55); font-weight: 700; text-align: right; line-height: 1.7;
+  }
+  .hero {
+    margin-top: 70px;
+  }
+  .pre {
+    font-size: 14px; letter-spacing: .26em; text-transform: uppercase;
+    color: #EF4444; font-weight: 800; margin-bottom: 26px;
+  }
+  .h1 {
+    font-family: Oranienbaum, serif;
+    font-size: 132px; line-height: 0.96; letter-spacing: -0.028em;
+    color: #06062D;
+    max-width: 9ch;
+  }
+  .h1 em {
+    font-style: italic; color: rgba(6,6,45,0.55);
+    display: block; margin-top: 4px;
+    font-size: 88px;
+  }
+  /* spec list — like Linear / Stripe pricing rows */
+  .specs {
+    margin-top: 56px; max-width: 720px;
+    display: flex; flex-direction: column; gap: 0;
+    border-top: 1px solid rgba(6,6,45,0.18);
+  }
+  .row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(6,6,45,0.18);
+  }
+  .row .k {
+    font-family: Manrope, sans-serif; font-size: 16px; font-weight: 600;
+    color: rgba(6,6,45,0.55); letter-spacing: 0.02em;
+  }
+  .row .v {
+    font-family: Oranienbaum, serif; font-size: 32px; color: #06062D;
+  }
+  .row .v em { color: #EF4444; font-style: normal; }
+
+  .bottom {
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .price {
+    font-family: Oranienbaum, serif; font-size: 36px; color: #06062D;
+  }
+  .price b { color: #EF4444; font-weight: 400; }
+  .cta {
+    font-family: Manrope, sans-serif; font-weight: 800; font-size: 17px;
+    color: #06062D; letter-spacing: 0.02em;
+    padding: 18px 26px; background: #06062D; color: #F8F8FF;
+    border-radius: 4px;
+  }
+  .cta b { color: #EF4444; font-weight: 800; }
+  .cta::after { content: "  →"; color: #EF4444; font-weight: 600; }
+</style>
+</head>
+<body>
+  <div class="ad">
+    <div class="top">
+      <div class="wm">Ghost Research<i>.</i></div>
+      <div class="meta">Caspr · Self-Serve<br/>Drops June 1, 2026</div>
+    </div>
+
+    <div class="hero">
+      <div class="pre">— 2026 Q3 Brief —</div>
+      <h1 class="h1">Supply chain.<em>Without the lag.</em></h1>
+
+      <div class="specs">
+        <div class="row"><span class="k">Sources</span><span class="v"><em>1,247</em>&nbsp; verified</span></div>
+        <div class="row"><span class="k">Reviewers</span><span class="v"><em>32</em>&nbsp; named SMEs</span></div>
+        <div class="row"><span class="k">Black-box claims</span><span class="v"><em>0</em></span></div>
+        <div class="row"><span class="k">Delivery</span><span class="v">Self-serve, instant</span></div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="price"><b>$500</b> &nbsp;institutional-grade.</div>
+      <div class="cta">Read the brief — <b>$500</b></div>
+    </div>
+  </div>
+</body>
+</html>

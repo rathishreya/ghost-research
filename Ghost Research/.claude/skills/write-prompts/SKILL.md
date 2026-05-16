@@ -23,6 +23,30 @@ Your job: turn each visual concept from `visual-concepts.md` into a generation b
 
 Ship **14 concepts minimum** (one primary asset per day): **Days 1–7 = Week 1 hype** (problem, category, waitlist language — no fake report excerpts). **Days 8–14 = Week 2 sales** (offer, price anchor ~$500, proof, urgency, Ghost Elite cross-sell where the brief allows).
 
+### The three aesthetic lanes (every concept must declare one)
+
+Every concept block now carries a `**Lane:**` field. The lane decides the visual
+vocabulary. Three lanes only — pick one per concept; do not blend.
+
+| Lane value | Reference | Visual code | Use case |
+|---|---|---|---|
+| `cinematic-ink` | Apple keynote stills, Linear product surfaces, Tesla reveals, OpenAI launch | Deep navy/black gradient · single hero element · soft red specular highlight · generous negative space · Oranienbaum serif headline ≤ 16ch · italic-red emphasis on the value claim | Reels / Stories / hero ads / brand video frames |
+| `editorial-paper` | Stripe Press, NYT Magazine, Information is Beautiful | Cream `#F4EFE6` or off-white `#F8F8FF` background · oversized serif number or pull-quote · Newsreader/Oranienbaum body type · footnote markers · tiny price + CTA at the very bottom | Static feed posts, LinkedIn squares, Meta carousels |
+| `methodology-specimen` | Academic journal, Bloomberg terminal export, leaked memo | Two columns of justified body type · running header with date + page number · section markers § 4.3 · footnote with red [N] · single oversized pull-quote with red marginal rule | Authority moments, retargeting, Day-8 launch announcement |
+
+**Brand bible is preserved across all three:** Oranienbaum + Manrope only. Two
+neutrals + one accent (`#EF4444`). Voice is precise / authoritative / institutional —
+never "game-changing" / "supercharge" / hype-startup vocabulary.
+
+### The six creative laws (non-negotiable across lanes)
+
+1. **One hero element per frame.** A number, a question, or a statement — never all three.
+2. **70% negative space minimum.** If it feels empty, it's right.
+3. **Two neutrals + one accent only.** No tonal middles.
+4. **The price is the proof.** $500 appears as a value claim, not as a button label. "Read for $500" beats "Buy Now".
+5. **No people in disrupt-grade work.** Pollinations human imagery goes only into retargeting / founder context, never into hero.
+6. **Motion is opacity + 6px translate-y.** No bounces, no slides. Linear/Apple ease everything, never animate everything.
+
 ### Conversion-grade copy conventions (do this every time)
 
 These are baked into the renderer's output quality — **violating them costs sales**.

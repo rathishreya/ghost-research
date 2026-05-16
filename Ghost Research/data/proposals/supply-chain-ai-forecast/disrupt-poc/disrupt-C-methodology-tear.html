@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;500;600;700;800&family=Newsreader:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1080px; height: 1350px;
+    background: #F8F8FF;
+    font-family: Manrope, system-ui, sans-serif;
+    color: #06062D;
+    -webkit-font-smoothing: antialiased;
+  }
+  .ad {
+    width: 100%; height: 100%;
+    padding: 76px 64px 60px;
+    display: flex; flex-direction: column; position: relative;
+  }
+  .top {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(6,6,45,.22);
+  }
+  .running {
+    font-family: Manrope, sans-serif;
+    font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
+    color: rgba(6,6,45,.62); font-weight: 700;
+  }
+  .page { font-family: Oranienbaum, serif; font-size: 18px; color: rgba(6,6,45,.55); }
+  .body {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 36px;
+    margin-top: 30px; flex: 1;
+    font-family: Newsreader, serif;
+  }
+  .col { font-size: 16.5px; line-height: 1.55; color: rgba(6,6,45,.82); }
+  .col p { margin-bottom: 13px; text-align: justify; hyphens: auto; }
+  .section { font-weight: 600; color: #06062D; }
+  .footnote {
+    font-size: 12px; color: rgba(6,6,45,.5); font-style: italic;
+    margin-top: 18px; padding-top: 12px;
+    border-top: 1px solid rgba(6,6,45,.18);
+    font-family: Manrope, sans-serif;
+  }
+  sup { font-size: 11px; color: #EF4444; font-weight: 700; padding: 0 2px; }
+  .pullquote {
+    font-family: Oranienbaum, serif;
+    font-size: 50px; line-height: 1.1;
+    color: #06062D;
+    padding: 0 0 0 24px;
+    border-left: 4px solid #EF4444;
+    margin: 22px 0 22px 0;
+  }
+  .pullquote em { color: #EF4444; font-style: italic; }
+  .bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 22px;
+    border-top: 1px solid rgba(6,6,45,.22);
+    margin-top: 22px;
+  }
+  .wm { font-family: Oranienbaum, serif; font-size: 22px; color: #06062D; }
+  .wm i { color: #EF4444; font-style: normal; }
+  .cta {
+    background: #EF4444; color: white;
+    font-family: Manrope, sans-serif; font-weight: 800; font-size: 17px;
+    padding: 16px 26px; border-radius: 4px;
+    box-shadow: 0 6px 24px rgba(239,68,68,.25);
+  }
+  .cta::after { content: "  →"; }
+</style>
+</head>
+<body>
+  <div class="ad">
+    <div class="top">
+      <span class="running">Caspr Methodology · 2026 Q3 · Supply Chain AI Forecast Accuracy</span>
+      <span class="page">— p. 14 —</span>
+    </div>
+
+    <div class="body">
+      <div class="col">
+        <p><span class="section">§ 4.3 — Multi-source synthesis pipeline.</span> Every input is graded against the Caspr Provenance Tier (1: regulatory filings, audited financials; 2: verified trade press; 3: signed expert commentary). Tier-3 contributions are reviewed by at least one named subject-matter expert with ten or more years of relevant operating tenure before a claim enters the published brief.<sup>[14]</sup></p>
+        <p><span class="section">§ 4.4 — Counter-source pass.</span> Each claim is required to survive contradiction by at least two independent inputs before publication. Failed claims are either dropped or annotated as open questions in Appendix B.</p>
+        <p class="footnote">[14] See Appendix C, Reviewer index, for the thirty-two named expert reviewers across logistics, S&OP, and AI deployment.</p>
+      </div>
+
+      <div class="col">
+        <div class="pullquote">"73% of operations leaders we interviewed are still <em>manually splicing</em> ERP exports with web-search summaries before board meetings."</div>
+        <p><span class="section">§ 4.5 — Forecast-accuracy benchmarking.</span> The 2026 SCAI brief tests AI-augmented synthesis against four reference forecasting stacks, including industry-standard demand-planning tooling, in three independent geographies (US, UK, EU-27).</p>
+        <p class="footnote">Continued on p. 15 →</p>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="wm">Ghost Research<i>.</i></div>
+      <span class="cta">Read the full brief — $500</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px; height: 1080px; overflow: hidden;
+    font-family: Manrope, system-ui, sans-serif;
+    color: #F8F8FF;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background:
+      radial-gradient(80% 60% at 70% 35%, rgba(24,22,80,0.65) 0%, rgba(6,6,45,0.95) 55%, #000 100%),
+      linear-gradient(180deg, #000 0%, #06062D 60%, #000 100%);
+    background-color: #000;
+    position: relative;
+  }
+  /* very subtle film-grain texture */
+  body::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 3px 3px; mix-blend-mode: screen; pointer-events: none;
+  }
+  /* single red specular highlight, like a Linear product render edge */
+  body::after {
+    content: ""; position: absolute;
+    top: 18%; right: -120px; width: 320px; height: 320px;
+    background: radial-gradient(closest-side, rgba(239,68,68,0.30) 0%, rgba(239,68,68,0) 70%);
+    filter: blur(20px); pointer-events: none;
+  }
+  .ad {
+    width: 100%; height: 100%;
+    padding: 88px 92px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; z-index: 2;
+  }
+  .top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .wm {
+    font-family: Oranienbaum, serif; font-size: 26px; letter-spacing: .01em;
+    color: rgba(248,248,255,0.96);
+  }
+  .wm i { color: #EF4444; font-style: normal; }
+  .meta {
+    font-size: 12px; letter-spacing: .26em; text-transform: uppercase;
+    color: rgba(248,248,255,0.48); font-weight: 600; text-align: right;
+    line-height: 1.7;
+  }
+  .body {
+    display: flex; flex-direction: column; justify-content: center; flex: 1;
+    margin-top: 40px;
+  }
+  .hero {
+    font-family: Oranienbaum, serif;
+    font-size: 124px; line-height: 1.02; letter-spacing: -0.022em;
+    color: #F8F8FF;
+    max-width: 16ch;
+  }
+  .hero em {
+    color: #EF4444; font-style: italic;
+  }
+  .rule {
+    width: 56px; height: 1.5px; background: #EF4444; margin-top: 40px;
+  }
+  .sub {
+    margin-top: 28px;
+    font-size: 22px; line-height: 1.55; color: rgba(248,248,255,0.62);
+    max-width: 38ch; font-weight: 400; letter-spacing: 0.005em;
+  }
+  .bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+  .price {
+    font-family: Oranienbaum, serif; font-size: 18px;
+    color: rgba(248,248,255,0.72); letter-spacing: 0.04em;
+  }
+  .price b { color: #F8F8FF; font-weight: 500; }
+  .cta {
+    font-family: Manrope, sans-serif; font-size: 16px; font-weight: 800;
+    letter-spacing: 0.04em; color: #EF4444;
+  }
+  .cta::after { content: "  →"; font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="ad">
+    <div class="top">
+      <div class="wm">Ghost Research<i>.</i></div>
+      <div class="meta">CASPR · Q3 2026<br/>Supply-chain forecasting</div>
+    </div>
+    <div class="body">
+      <h1 class="hero">Six weeks of forecast lag, <em>in one brief.</em></h1>
+      <div class="rule"></div>
+      <p class="sub">1,247 verified sources. 32 named SMEs. Every claim cited. Drops June 1, 2026.</p>
+    </div>
+    <div class="bottom">
+      <div class="price"><b>$500</b> &nbsp;·&nbsp; institutional-grade, self-serve.</div>
+      <div class="cta">Read the brief</div>
+    </div>
+  </div>
+</body>
+</html>
