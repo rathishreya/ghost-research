@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Generate Ghost Research image assets via the NanoBanana API.
+"""Generate Ghost Research image assets via the NanoBanana REST API (nanobananaapi.ai).
 
 This script reads a proposal's ``prompts.md`` file, extracts every concept whose
-tool is ``nanobanana``, submits the prompt to NanoBanana, polls until the task
+**Tool** contains ``nanobanana-api`` (or ``nanobanana_rest``), submits the prompt
+to NanoBanana, polls until the task
 completes, and downloads the resulting image into ``data/proposals/<slug>/assets``.
 
 Environment variables:
@@ -214,9 +215,15 @@ def download_file(url: str, destination: Path) -> None:
 
 
 def select_concepts(concepts: Iterable[ConceptPrompt], selected_ids: set[str] | None) -> list[ConceptPrompt]:
+    """Only concepts explicitly routed to the paid NanoBanana REST API.
+
+    ``Tool: nanobanana`` alone is still handled by Pollinations (free FLUX) in
+    ``pollinations_image.py``. Use ``nanobanana-api`` in prompts for this script.
+    """
     selected = []
     for concept in concepts:
-        if "nanobanana" not in concept.tool.lower():
+        tool = concept.tool.lower()
+        if "nanobanana-api" not in tool and "nanobanana_rest" not in tool:
             continue
         if selected_ids and concept.concept_id not in selected_ids:
             continue
@@ -274,10 +281,10 @@ def main() -> int:
     nanobanana_concepts = select_concepts(concepts, selected_ids)
 
     if not nanobanana_concepts:
-        print("No nanobanana concepts found for the requested selection.")
+        print("No nanobanana-api concepts found for the requested selection.")
         return 0
 
-    print(f"Found {len(nanobanana_concepts)} nanobanana concept(s) in {prompts_path}.")
+    print(f"Found {len(nanobanana_concepts)} nanobanana-api concept(s) in {prompts_path}.")
     failures = 0
 
     for concept in nanobanana_concepts:

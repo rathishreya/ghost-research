@@ -1,0 +1,49 @@
+HOW TO GET 4 PUBLISH-READY STILLS + 4 MP4S (same brief, Pomelli regenerates)
+=============================================================================
+
+1. Open https://labs.google.com/pomelli/
+2. Paste the BRIEF below into Pomelli. Run / generate FOUR times with the SAME
+   text (each run should produce a different layout or crop — that is the point).
+3. Export each result as PNG or JPG, 9:16 (1080×1920 or closest).
+4. Drop files into:
+   Ghost Research/data/proposals/supply-chain-ai-forecast/pomelli-inbox/
+   Name them: 15.png, 16.png, 17.png, 18.png
+   (or concept-15.png … concept-18.png — see import_pomelli_exports.py --help)
+5. Import into assets (maps to prompts.md Suggested filenames):
+   python scripts/import_pomelli_exports.py --slug supply-chain-ai-forecast --overwrite
+6. Render only the four motion clips (optional — avoids re-encoding concepts 06 & 12):
+   python scripts/animate_image.py --slug supply-chain-ai-forecast --concept 19 --concept 20 --concept 21 --concept 22 --overwrite
+
+PATH B — Pomelli exported VIDEO (no Ken-Burns step)
+-----------------------------------------------
+If Pomelli gives you MP4/WebM files instead of stills:
+1. Save them into pomelli-inbox/ as: 19.mp4, 20.mp4, 21.mp4, 22.mp4
+   (those concept IDs match the motion row filenames in prompts.md)
+2. Run the same import command as step 5. Files appear in assets/ as
+   concept-19-pomelli-pack-motion-v1.mp4 … concept-22-pomelli-pack-motion-v4.mp4
+3. Open that folder in File Explorer and play the MP4s — you do NOT run animate_image.py for path B.
+
+Check what is missing (inbox + disk files for concepts 15–22):
+   python scripts/import_pomelli_exports.py --slug supply-chain-ai-forecast --status
+
+Videos from the MAIN 14-day flight (not Pomelli pack) live in the same assets/
+folder — e.g. concept-06-w1d6-hero-motion.mp4, concept-07-w1d7-kinetic-hype.mp4.
+
+Alternative: fill pomelli-variant-manifest.TEMPLATE.json with absolute paths to
+your four exports, save as pomelli-variant-manifest.json, then:
+   python scripts/import_pomelli_exports.py --slug supply-chain-ai-forecast --manifest data/proposals/supply-chain-ai-forecast/pomelli/pomelli-variant-manifest.json --overwrite
+
+
+--- BRIEF (paste unchanged for all four Pomelli runs) ---
+
+9:16 Instagram Story / Reels — single publish-ready frame for "Ghost Research · Supply Chain AI Forecast Accuracy" (waitlist / hype).
+
+Visual: premium logistics control room at blue hour; senior operator in silhouette reviewing abstract network / heat maps on monitors; faces not readable; deep indigo #181650 and navy #06062D color grade; one small red #EF4444 accent on a single UI bezel only; Bloomberg documentary lighting; photoreal; generous lower-third safe zone; no fake micro text on screens.
+
+On-image copy (must be sharp and legible):
+Eyebrow (small caps): Coming soon
+Headline: Your forecast stack still reads last quarter.
+Supporting line: Curated, expert-vetted synthesis for operators who cannot ship another lagging dashboard to the board.
+CTA button text: Save the date
+
+Constraints: no watermarks, no third-party logos, no sci-fi HUD clichés, no robots.

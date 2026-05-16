@@ -11,3 +11,9 @@ __pycache__/
 .venv/
 venv/
 node_modules/
+
+# Per-proposal generated binaries (JPG/PNG/MP4). Spec lives in prompts.md +
+# editorial/*.html which ARE tracked, so anyone can regenerate with one command.
+data/proposals/*/assets/
+data/proposals/*/.ghost-recording/
+data/proposals/*/pomelli-inbox/

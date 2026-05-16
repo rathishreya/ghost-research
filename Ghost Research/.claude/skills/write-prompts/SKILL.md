@@ -1,21 +1,55 @@
 ---
 name: write-prompts
-description: Convert Ghost Research visual concepts into ready-to-generate prompts. Each concept is tagged with a Tool (pollinations / editorial / animate / animated-html / veo) so /generate-assets and /generate-video can dispatch automatically. Every prompt encodes Ghost brand rules — deep indigo grade, real professionals only, no robots. Use when the user wants generation prompts, says "write prompts", "/write-prompts", or right after /design-ads.
+description: Convert Ghost Research visual concepts into prompts tagged by Tool (`pollinations` default, optional `nanobanana-api` with paid key, `editorial`, `animate`, `animated-html`, `veo`) so `/generate-assets` and `/generate-video` dispatch scripts — never chat inline images as deliverables.
 ---
 
 # Prompt Engineering Agent — Ghost Research
 
-Your job: turn each visual concept from `visual-concepts.md` into a generation block that downstream scripts can execute automatically. The user is non-technical — `/generate-assets` must run with zero edits.
+Your job: turn each visual concept from `visual-concepts.md` into a generation block that downstream scripts can execute automatically. The user is non-technical — `/generate-assets` must run with zero edits. **Do not sketch ad frames with chat-native image tooling** — all raster deliverables flow through Pollinations/editorial/API scripts into `assets/`.
 
-## The five Tool routes (pick one per concept)
+## The Tool routes (pick one per concept)
 
 | Tool value | What it produces | Backed by | When to pick |
 |---|---|---|---|
-| `pollinations` | Photo / scene image (JPG) | Pollinations.ai (free FLUX) | Human subjects, environments, real-world scenes |
+| `pollinations` | Photo / scene image (JPG) | Pollinations.ai (defaults to `flux-realism` profile via launcher) | Default hero scenes / human+dashboard photography |
+| `nanobanana-api` | Photo / scene (JPG/PNG) | Paid NanoBanana REST (`NANOBANANA_API_KEY`; `scripts/nanobanana_generate.py`) | Same use-case as pollinations — only when the user insists on NanoBanana output |
 | `editorial` | Typography / data viz card (PNG) | HTML/CSS rendered via Playwright | Headlines, big stats, "report cover" style cards, document mock-ups |
 | `animate` | Cinematic short video (MP4) | Static image + Ken Burns motion (ffmpeg) | Animating any `pollinations` or `editorial` image into a 6–8s scroll-stopper |
 | `animated-html` | Pure-typography video (MP4) | HTML + CSS animations recorded by Playwright | Kinetic-type spots, "counting up" stat reveals, headline reveals |
+| `composite-editorial` | (alias) same as `editorial` when HTML uses `GHOST_ASSET:` | Use `Tool: editorial` and embed `GHOST_ASSET:filename.jpg` in CSS `url(...)` | **Ad-ready static ads:** photo + headline + sub + CTA in one PNG |
 | `veo` | Photoreal video (MP4) | Veo 3 Fast | **Paid Google AI Studio only.** Skip unless the user has upgraded. |
+
+### Two-week calendar default (off-the-shelf campaigns)
+
+Ship **14 concepts minimum** (one primary asset per day): **Days 1–7 = Week 1 hype** (problem, category, waitlist language — no fake report excerpts). **Days 8–14 = Week 2 sales** (offer, price anchor ~$500, proof, urgency, Ghost Elite cross-sell where the brief allows).
+
+### Conversion-grade copy conventions (do this every time)
+
+These are baked into the renderer's output quality — **violating them costs sales**.
+
+1. **Every CTA ends with `→`** (the U+2192 right arrow). On editorial composites, append the arrow in the HTML CTA string. On animate / kinetic, the renderer appends it for you when the CTA field has no arrow.
+2. **Week 1 CTAs trade in *waitlist* energy:** "Get on the list", "Reserve early access", "Notify me on launch". Avoid "Save the date" (event-y, not B2B).
+3. **Week 2 CTAs *anchor the price*:** "Read the brief — $500", "Get the report — $500", "Download now — $500", "Buy for $500". Price anchoring is non-negotiable for $500 reports — confidence in pricing builds trust, and the $500 looks small next to "Bloomberg terminal" mental anchors.
+4. **Every Week-2 eyebrow includes "$500"** (e.g. `AVAILABLE NOW · $500`, `BUNDLE-READY · $500`). The Week-1 eyebrow uses the publish date instead (`DROPS JUNE 1, 2026`, `CASPR. SELF-SERVE · DROPS <date>`).
+5. **Every animate concept ships an `**On-screen eyebrow:**`** field — the renderer paints it in accent red above the headline. Default eyebrow: `GHOST RESEARCH` if you don't write one, but always write one.
+6. **Headlines are *concrete, not categorical*.** "Demand signals are moving faster than ERP exports" beats "AI for supply chains". Lead with a specific job, a specific stack, a specific stakeholder.
+7. **Subs are exactly two sentences max,** and one of those is a credibility line (`1M+ curated sources. Vetted by 10+ year domain SMEs.`).
+
+### Ad-ready frames (photo + type in one file)
+
+1. **Base still** (`pollinations`): scene only — **no burned-in marketing copy** (image models garble small type).  
+2. **Composite** (`editorial`): full HTML card with `background-image: linear-gradient(...), url("GHOST_ASSET:concept-01-your-base.jpg")` plus Oranienbaum/Manrope headline, subcopy, and red `#EF4444` CTA. At render time, scripts rewrite `GHOST_ASSET:` to a `file://` URL so Chromium loads the JPG from `assets/`.  
+3. **Motion** (`animate`): set `**Source image:**` to the **composite PNG** (not the raw base JPG) so Ken-Burns clips carry the typography.  
+4. **Kinetic video** (`animated-html`): use the same photo+type layout in HTML; optional `GHOST_ASSET:` background so the MP4 is not flat color only.
+
+### Pomelli (Google Labs)
+
+**There is no Pomelli HTTP API** for this repo. For studio polish, use [Pomelli](https://labs.google.com/pomelli/), export PNG/MP4, then either:
+
+- Drop files into `data/proposals/<slug>/pomelli-inbox/` named `concept-01.png` or `01.jpg` and run `python scripts/import_pomelli_exports.py --slug <slug> --overwrite`, **or**
+- Chain `python scripts/generate_proposal_assets.py --slug <slug> --import-pomelli-inbox` so imports run before Pollinations (existing files skip regeneration).
+
+Imports copy into the exact **`Suggested filename`** from each concept block in `prompts.md` (so editorial `GHOST_ASSET:` paths stay valid).
 
 **Default routing in 2026** (free tier):
 - Hero / scene shots → `pollinations`
@@ -42,7 +76,10 @@ photoreal, shot on Arri Alexa Mini with 50mm prime, shallow depth of field,
 natural skin tones, cinematic dusk light.
 ```
 
-### Universal negatives (every prompt)
+### Universal negatives (every **pollinations / Imagen raster** prompt)
+
+Use these for **scene generators only**. HTML `editorial` composites intentionally contain **marketing typography** in the DOM (not inside the raster JPG).
+
 ```
 no robots, no AI-themed imagery, no brain circuits, no glowing nodes,
 no holograms, no neon, no cyberpunk, no sci-fi UI, no high-fiving,
@@ -75,14 +112,14 @@ total_prompts: [N]
 
 ## How to use this file
 
-1. Run `/generate-assets` — this auto-runs every concept whose `Tool:` is `pollinations` or `editorial`
+1. Run `/generate-assets` — this runs `scripts/generate_proposal_assets.py` for every concept whose `Tool:` is `pollinations`, legacy aliases, optional `nanobanana-api` (paid key only), or `editorial`.
 2. Run `/generate-video` — this auto-runs every `animate` and `animated-html` concept
 3. Want a change? Run `/edit-ad [concept-id] "your instruction"`
 4. When all assets look right, run `/prep-campaign`
 
 ## Brand reminder
 
-- Pollinations + Editorial images do NOT contain text — overlays go in Figma/Canva later if needed
+- Pollinations / Imagen **base stills** stay text-free (models hallucinate copy). **All marketing copy** lives in `editorial` HTML composites using `GHOST_ASSET:your-base.jpg`, or in Pomelli exports you import into `assets/` via `pomelli-inbox/` + `import_pomelli_exports.py`.
 - Ghost color grade must be visible in every output (deep indigo + cool navy)
 - If a generated person looks AI-uncanny, run `/edit-ad` with "regenerate with a different face" until clean
 

@@ -29,7 +29,7 @@ import imageio_ffmpeg
 os.environ.setdefault("IMAGEIO_FFMPEG_EXE", imageio_ffmpeg.get_ffmpeg_exe())
 FFMPEG_EXE = imageio_ffmpeg.get_ffmpeg_exe()
 
-from _common import REPO_ROOT, normalize_aspect
+from _common import REPO_ROOT, inject_ghost_asset_urls, normalize_aspect
 
 
 ASPECT_TO_DIMS = {
@@ -113,7 +113,9 @@ def parse_args() -> argparse.Namespace:
 def _field(concept, key: str, default=None):
     import re
     m = re.search(rf"^\*\*{re.escape(key)}:\*\*\s*(.+)$", concept.raw_body, re.MULTILINE)
-    return m.group(1).strip() if m else default
+    if not m:
+        return default
+    return m.group(1).strip().strip("`")
 
 
 def bulk_record(slug: str, selected_ids, default_aspect: str, default_duration: float, fps: int, overwrite: bool) -> int:
@@ -147,7 +149,7 @@ def bulk_record(slug: str, selected_ids, default_aspect: str, default_duration: 
         html_dir = proposal_dir / "editorial"
         html_dir.mkdir(parents=True, exist_ok=True)
         html_path = html_dir / f"{Path(out_name).stem}.html"
-        html_path.write_text(concept.prompt, encoding="utf-8")
+        html_path.write_text(inject_ghost_asset_urls(concept.prompt, assets_dir), encoding="utf-8")
 
         print(f"[{concept.concept_id}] {concept.name}")
         print(f"  html:     {html_path.name}")
@@ -194,16 +196,24 @@ def main() -> int:
     if not out_path.is_absolute():
         out_path = REPO_ROOT / out_path
 
+    assets_dir = out_path.parent
+    injected = inject_ghost_asset_urls(html_path.read_text(encoding="utf-8"), assets_dir)
+    tmp = out_path.parent / f".ghost-animated-src-{html_path.stem}.html"
+    tmp.write_text(injected, encoding="utf-8")
     print(f"HTML:     {html_path}")
     print(f"Aspect:   {args.aspect}  duration={args.duration}s")
     print(f"Output:   {out_path}")
 
     try:
-        record(html_path, out_path, aspect=args.aspect, duration=args.duration, fps=args.fps)
+        record(tmp, out_path, aspect=args.aspect, duration=args.duration, fps=args.fps)
     except Exception as exc:  # noqa: BLE001
         print(f"Failed: {exc}", file=sys.stderr)
         return 1
-
+    finally:
+        try:
+            tmp.unlink(missing_ok=True)
+        except OSError:
+            pass
     print(f"Saved -> {out_path}  ({out_path.stat().st_size // 1024} KB)")
     return 0
 

@@ -5,7 +5,10 @@ Uses Imagen 4 (Ultra/Standard/Fast) for hero-quality generation.
 Reads `data/proposals/<slug>/prompts.md`, picks every image concept,
 generates the image, and saves the JPG/PNG into `data/proposals/<slug>/assets/`.
 
-Concepts are matched when **Tool:** contains any of: nanobanana, imagen, image, photo.
+Concept routing is narrower than Pollinations.ai: excludes motion tools
+(``animate``, ``animated-html``, ``veo``), ``editorial``, and ``nanobanana-api``
+(REST). With ``--routes-pollinations``, still photos tagged ``pollinations``
+use Imagen instead of Pollinations.
 """
 
 from __future__ import annotations
@@ -25,16 +28,33 @@ from _common import (
 )
 
 
-IMAGE_TOOL_KEYWORDS = ("nanobanana", "imagen", "image", "photo", "static")
+# Default: Imagen-eligible prompts (explicit image tools + legacy aliases).
+# With --routes-pollinations, ``Tool: pollinations`` stills also use Imagen
+# instead of Pollinations.ai (premium stack).
+IMAGE_TOOL_BASE = ("nanobanana", "imagen", "image", "photo", "static")
+MOTION_OR_VIDEO_TOOL_MARKERS = ("animate", "animated-html", "veo")
 
 
-def select_image_concepts(concepts: list[ConceptPrompt], selected_ids: set[str] | None) -> list[ConceptPrompt]:
+def select_image_concepts(
+    concepts: list[ConceptPrompt],
+    selected_ids: set[str] | None,
+    *,
+    routes_pollinations: bool = False,
+) -> list[ConceptPrompt]:
+    keywords: tuple[str, ...] = IMAGE_TOOL_BASE
+    if routes_pollinations:
+        keywords = (*IMAGE_TOOL_BASE, "pollinations")
+
     out: list[ConceptPrompt] = []
     for concept in concepts:
         tool = concept.tool.lower()
-        if "veo" in tool or "video" in tool:
+        if any(m in tool for m in MOTION_OR_VIDEO_TOOL_MARKERS):
             continue
-        if not any(k in tool for k in IMAGE_TOOL_KEYWORDS):
+        if "nanobanana-api" in tool or "nanobanana_rest" in tool:
+            continue  # Routed to NanoBanana REST script, not Imagen.
+        if "editorial" in tool:
+            continue  # Typography cards use render_editorial.py
+        if not any(k in tool for k in keywords):
             continue
         if selected_ids and concept.concept_id not in selected_ids:
             continue
@@ -49,15 +69,27 @@ def build_prompt(concept: ConceptPrompt) -> str:
     return body
 
 
+def imagen_aspect_ratio(raw: str) -> str:
+    """Imagen generate_images supports a subset of ratios; map the rest."""
+    a = normalize_aspect(raw, for_video=False)
+    return {
+        "4:5": "3:4",
+        "5:4": "4:3",
+        "2:3": "3:4",
+        "3:2": "4:3",
+        "21:9": "16:9",
+    }.get(a, a)
+
+
 def generate_one(client, model: str, concept: ConceptPrompt, output_path: Path) -> None:
     from google.genai import types
 
-    aspect = normalize_aspect(concept.aspect, for_video=False)
+    aspect = imagen_aspect_ratio(concept.aspect)
     config = types.GenerateImagesConfig(
         number_of_images=1,
         aspect_ratio=aspect,
         output_mime_type="image/jpeg" if output_path.suffix.lower() in {".jpg", ".jpeg"} else "image/png",
-        safety_filter_level="BLOCK_ONLY_HIGH",
+        safety_filter_level="BLOCK_LOW_AND_ABOVE",
         person_generation="ALLOW_ADULT",
     )
 
@@ -90,6 +122,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--concept", action="append", help="Specific concept id(s), e.g. --concept 01")
     parser.add_argument("--quality", choices=["ultra", "standard", "fast"], default="ultra",
                         help="Image quality. ultra = Imagen 4 Ultra (best, slower), fast = Imagen 4 Fast (cheap free-tier).")
+    parser.add_argument(
+        "--routes-pollinations",
+        action="store_true",
+        help='Also dispatch concepts whose Tool contains "pollinations" (skip Pollinations.ai; use Imagen).',
+    )
     parser.add_argument("--overwrite", action="store_true", help="Overwrite existing assets")
     parser.add_argument("--dry-run", action="store_true", help="Parse only; do not call API")
     return parser.parse_args()
@@ -122,9 +159,12 @@ def main() -> int:
         return 1
 
     selected_ids = {c.zfill(2) for c in args.concept} if args.concept else None
-    target = select_image_concepts(concepts, selected_ids)
+    target = select_image_concepts(concepts, selected_ids, routes_pollinations=args.routes_pollinations)
     if not target:
-        print("No image concepts matched (none with Tool containing nanobanana/imagen/image/photo).")
+        hint = "nanobanana/imagen/image/photo/static"
+        if args.routes_pollinations:
+            hint += "/pollinations"
+        print(f"No image concepts matched Imagen routing (need Tool containing any of: {hint}).")
         return 0
 
     print(f"Imagen model: {model}  (quality={args.quality})")

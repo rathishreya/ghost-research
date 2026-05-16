@@ -8,8 +8,9 @@ Pollinations is a free, no-auth wrapper around FLUX. Quality is solid for premiu
 B2B aesthetics when paired with strong style anchors. Use `editorial` model for the
 sharpest editorial look, `flux` for general-purpose.
 
-Concepts matched when **Tool:** contains: pollinations, flux, nanobanana, imagen,
-image, photo (any image generator alias).
+Concepts matched when **Tool:** contains: pollinations, flux, nanobanana (Pollinations alias),
+image, photo, static — but NOT ``nanobanana-api`` (handled by nanobanana_generate.py).
+
 """
 
 from __future__ import annotations
@@ -55,6 +56,9 @@ def select_image_concepts(concepts: list[ConceptPrompt], selected_ids: set[str] 
             continue
         if "editorial" in tool:
             # editorial cards are handled by render_editorial.py, not this script
+            continue
+        # Paid NanoBanana REST API (nanobananaapi.ai) — handled by nanobanana_generate.py
+        if "nanobanana-api" in tool or "nanobanana_rest" in tool:
             continue
         if not any(k in tool for k in IMAGE_TOOL_KEYWORDS):
             continue
@@ -144,7 +148,7 @@ def main() -> int:
         print("No image concepts matched.")
         return 0
 
-    print(f"Pollinations model: {args.model}")
+    target.sort(key=lambda c: int(c.concept_id))
     print(f"Generating {len(target)} image(s) for slug '{args.slug}'\n")
     failures = 0
 

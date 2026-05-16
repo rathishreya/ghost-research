@@ -18,6 +18,7 @@ from pathlib import Path
 from _common import (
     ConceptPrompt,
     REPO_ROOT,
+    inject_ghost_asset_urls,
     normalize_aspect,
     parse_concepts,
     proposal_paths,
@@ -85,7 +86,7 @@ def bulk_render(slug: str, selected_ids: set[str] | None, scale: float, overwrit
         print("No editorial concepts matched.")
         return 0
 
-    print(f"Rendering {len(target)} editorial card(s) for slug '{slug}'\n")
+    target.sort(key=lambda c: int(c.concept_id))
     failures = 0
     for concept in target:
         suggested = concept.suggested_filename
@@ -102,7 +103,16 @@ def bulk_render(slug: str, selected_ids: set[str] | None, scale: float, overwrit
             print("  - dry run: HTML parsed OK")
             continue
         try:
-            render(concept.prompt, output_path, concept.aspect, scale)
+            html_ready = inject_ghost_asset_urls(concept.prompt, assets_dir)
+            # Write HTML to disk so Chromium loads it via file:// origin.
+            # Required: about:blank pages cannot fetch file:// resources, so
+            # background-image: url(file:///...) silently fails when we use
+            # page.set_content(). page.goto(file://...) makes those fetches work.
+            editorial_dir = proposal_dir / "editorial"
+            editorial_dir.mkdir(parents=True, exist_ok=True)
+            html_path = editorial_dir / (Path(suggested).stem + ".html")
+            html_path.write_text(html_ready, encoding="utf-8")
+            render(html_path, output_path, concept.aspect, scale)
             print(f"  - saved ({output_path.stat().st_size // 1024} KB)")
         except Exception as exc:  # noqa: BLE001
             failures += 1
@@ -144,7 +154,9 @@ def main() -> int:
         out_path = Path(args.out)
         if not out_path.is_absolute():
             out_path = REPO_ROOT / out_path
-        render(html_path, out_path, args.aspect, args.scale)
+        text = html_path.read_text(encoding="utf-8")
+        assets_dir = out_path.parent
+        render(inject_ghost_asset_urls(text, assets_dir), out_path, args.aspect, args.scale)
         print(f"Rendered -> {out_path}  ({out_path.stat().st_size // 1024} KB)")
         return 0
 

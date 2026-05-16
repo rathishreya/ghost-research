@@ -24,6 +24,10 @@ Free stack — no API keys required:
   `data/proposals/<slug>/assets/`. The animator looks for either the concept's
   own `Suggested filename` (stem) or the file named in a `**Source image:**`
   field. If a source is missing, tell the user to run `/generate-assets` first.
+- For **publication-ready motion with copy on frame**, the concept body can
+  include `**On-screen headline:**`, `**On-screen sub:**`, and
+  `**On-screen CTA:**`. `animate_image.py` burns these in (Pillow overlay) on
+  top of the Ken-Burns clip so the MP4 is not a silent plate.
 
 ## Step 2 — Dispatch
 
@@ -101,4 +105,6 @@ What you should do next:
 - For `animated-html`, the rendered HTML is also written to
   `data/proposals/<slug>/editorial/<filename>.html` so you can hand-tweak the
   animation timing and re-render with `--overwrite`.
+- For `animate`, optional `**Skip if source missing:** yes` skips without failing
+  the whole video batch when a source still (e.g. Pomelli import) is not on disk yet.
 - Do not commit `data/proposals/<slug>/assets/` or `.../editorial/`.

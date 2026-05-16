@@ -118,3 +118,23 @@ BRAND_NEGATIVE = (
     "no AI-generated faces, no uncanny features, no text in image, "
     "no logos, no watermarks, no embedded captions."
 )
+
+# In editorial / animated-html prompts, use `GHOST_ASSET:filename.jpg` anywhere you need
+# a `file://` URL to an existing file in `assets/` (e.g. CSS background-image). Scripts
+# replace the token before Playwright loads the page.
+GHOST_ASSET_TOKEN = re.compile(r"GHOST_ASSET:([\w\-.]+)")
+
+
+def inject_ghost_asset_urls(html: str, assets_dir: Path) -> str:
+    """Resolve GHOST_ASSET:file.ext tokens to absolute file:/// URIs for local Playwright loads."""
+
+    def repl(match: re.Match[str]) -> str:
+        name = match.group(1)
+        target = (assets_dir / name).resolve()
+        if not target.is_file():
+            raise FileNotFoundError(
+                f"GHOST_ASSET references missing file: {name} (expected at {target})"
+            )
+        return target.as_uri()
+
+    return GHOST_ASSET_TOKEN.sub(repl, html)
