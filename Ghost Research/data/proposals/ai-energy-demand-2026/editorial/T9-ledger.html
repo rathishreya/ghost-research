@@ -1,0 +1,58 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%}
+  body{position:relative;overflow:hidden;width:100%;height:100vh;color:#0E0E2A;
+    font-family:'Manrope',system-ui,sans-serif;background:#F4F5FB;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .content{position:relative;z-index:2;width:100%;height:100vh;padding:7.6%;display:flex;flex-direction:column}
+  .top{display:flex;align-items:flex-start;justify-content:space-between}
+  .logo{width:80px;height:80px;background:#EF4444;border-radius:21px;position:relative;flex-shrink:0;box-shadow:0 10px 30px rgba(239,68,68,.2)}
+  .logo::after{content:"";position:absolute;inset:24px;background:#fff;border-radius:8px}
+  .kick{text-align:right;font-size:18px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#EF4444;padding-top:8px}
+
+  .doctitle{margin-top:34px;font-size:21px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#0E0E2A}
+  .colhead{display:flex;justify-content:space-between;margin-top:22px;padding-bottom:12px;border-bottom:2px solid #0E0E2A;
+    font-size:16px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(14,14,42,.55)}
+
+  .row{display:flex;align-items:center;justify-content:space-between;padding:15px 0;border-bottom:1px solid rgba(14,14,42,.12)}
+  .ix{font-size:22px;font-weight:700;color:rgba(14,14,42,.4);width:42px;font-variant-numeric:tabular-nums}
+  .nm{flex:1}
+  .bar{display:inline-block;height:22px;border-radius:4px;background:#0E0E2A}
+  .amt{font-family:'Oranienbaum',serif;font-size:30px;color:#0E0E2A}
+  .amtbar{display:inline-block;height:22px;width:120px;border-radius:4px;background:#0E0E2A}
+  .row.live .nm .bar{background:rgba(239,68,68,.18)}
+  .row.live .amt{color:#EF4444}
+
+  .total{display:flex;align-items:baseline;justify-content:space-between;margin-top:26px;padding-top:20px;border-top:3px solid #0E0E2A}
+  .tlbl{font-size:24px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+  .tval{font-family:'Oranienbaum',serif;font-size:84px;line-height:.9;color:#EF4444}
+
+  .foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+  .note{font-size:18px;color:rgba(14,14,42,.55);font-weight:500;max-width:24ch}
+  .cta{background:#EF4444;color:#fff;font-weight:700;font-size:22px;padding:17px 30px;border-radius:13px;box-shadow:0 12px 30px rgba(239,68,68,.28)}
+</style></head><body>
+  <div class="content">
+    <div class="top">
+      <div class="logo"></div>
+      <div class="kick">Drops<br>June 1, 2026</div>
+    </div>
+    <div class="doctitle">AI Capex &mdash; Utility Exposure Ledger</div>
+    <div class="colhead"><span>Utility</span><span>AI-driven exposure</span></div>
+
+    <div class="row"><div class="ix">01</div><div class="nm"><span class="bar" style="width:210px"></span></div><div class="amtbar" style="width:120px"></div></div>
+    <div class="row"><div class="ix">02</div><div class="nm"><span class="bar" style="width:260px"></span></div><div class="amtbar" style="width:104px"></div></div>
+    <div class="row"><div class="ix">03</div><div class="nm"><span class="bar" style="width:180px"></span></div><div class="amtbar" style="width:132px"></div></div>
+    <div class="row"><div class="ix">04</div><div class="nm"><span class="bar" style="width:240px"></span></div><div class="amtbar" style="width:96px"></div></div>
+    <div class="row live"><div class="ix">05</div><div class="nm"><span class="bar" style="width:200px"></span></div><div class="amt">$ &#9608;&#9608;.&#9608; B</div></div>
+    <div class="row"><div class="ix">06</div><div class="nm"><span class="bar" style="width:150px"></span></div><div class="amtbar" style="width:118px"></div></div>
+    <div class="row"><div class="ix">07&ndash;09</div><div class="nm"><span class="bar" style="width:290px"></span></div><div class="amtbar" style="width:140px"></div></div>
+
+    <div class="total"><div class="tlbl">Total mapped</div><div class="tval">$147.0B</div></div>
+    <div class="foot">
+      <div class="note">Nine utilities. Every figure traced to FERC filings &amp; 10-Qs. The Atlas un-redacts them.</div>
+      <div class="cta">Get on the drop list &rarr;</div>
+    </div>
+  </div>
+</body></html>

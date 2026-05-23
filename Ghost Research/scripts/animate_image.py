@@ -138,6 +138,26 @@ def _draw_wrapped(
     return cy
 
 
+def _draw_logo_mark(draw, x: int, y: int, size: int) -> None:
+    """Paint the Ghost Research icon mark (red rounded-square + white inset circle).
+
+    MANDATORY on every creative — sits in top-left of every frame, never fades.
+    Matches `Ghost Research/assets/brand/logo-mark.svg`.
+    """
+    corner_radius = int(size * 0.22)
+    draw.rounded_rectangle(
+        (x, y, x + size, y + size),
+        radius=corner_radius,
+        fill=(239, 68, 68, 255),
+    )
+    circle_radius = int(size * 0.19)
+    cx, cy = x + size // 2, y + size // 2
+    draw.ellipse(
+        (cx - circle_radius, cy - circle_radius, cx + circle_radius, cy + circle_radius),
+        fill=(255, 255, 255, 255),
+    )
+
+
 def build_text_overlay_png(width: int, height: int, headline: str, sub: str, cta: str,
                            *, eyebrow: str = "GHOST RESEARCH",
                            brand_mark: str = "Ghost Research.") -> Path:
@@ -145,7 +165,8 @@ def build_text_overlay_png(width: int, height: int, headline: str, sub: str, cta
 
     Designed for 1080x1920 9:16, scales reasonably for 1:1 / 16:9 / 4:5.
     Brand-locked: Oranienbaum serif (headline), Manrope (eyebrow + body + CTA),
-    accent red #EF4444 button, Ghost wordmark in top-left.
+    accent red #EF4444 button, MANDATORY Ghost icon mark in top-left
+    (red rounded-square with white inset circle — see assets/brand/logo-mark.svg).
     """
     from PIL import Image, ImageDraw
 
@@ -186,18 +207,16 @@ def build_text_overlay_png(width: int, height: int, headline: str, sub: str, cta
     floor_h = int(height * 0.18)
     draw.rectangle((0, height - floor_h, width, height), fill=(6, 6, 45, 245))
 
-    # Top-left brand mark + thin rule below it.
+    # Top-left brand mark — MANDATORY icon (red rounded-square with white circle).
+    # Lives on every frame from 0s to last, never fades. The text wordmark is gone —
+    # the icon mark IS the brand mark now (per 2026-05-20 brand directive).
     margin = int(short_edge * 0.052)
-    brand_text = brand_mark
-    btb = draw.textbbox((0, 0), brand_text, font=font_b)
-    # subtle dark scrim behind brand area for legibility
-    draw.rectangle((0, 0, width, margin + (btb[3] - btb[1]) + 36),
+    logo_size = int(short_edge * 0.095)        # ~103px on 1080 short edge
+    # subtle dark scrim behind the badge zone so the mark reads on bright photos
+    scrim_pad = int(short_edge * 0.022)
+    draw.rectangle((0, 0, width, margin + logo_size + scrim_pad),
                    fill=(6, 6, 45, 80))
-    draw.text((margin, margin), brand_text, font=font_b, fill=(248, 248, 255, 255))
-    # the "." gets accent red
-    dot_x = margin + (btb[2] - btb[0]) - draw.textbbox((0, 0), ".", font=font_b)[2]
-    # (We can't easily recolor a single char of an already-drawn string, so we re-draw a red overlay dot.)
-    draw.text((dot_x, margin), ".", font=font_b, fill=(239, 68, 68, 255))
+    _draw_logo_mark(draw, margin, margin, logo_size)
 
     # ---- body block ----
     inner_w = width - 2 * margin

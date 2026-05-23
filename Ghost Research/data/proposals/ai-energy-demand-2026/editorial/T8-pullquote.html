@@ -1,0 +1,42 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%}
+  body{position:relative;overflow:hidden;width:100%;height:100vh;color:#0E0E2A;
+    font-family:'Manrope',system-ui,sans-serif;background:#F1F3FF;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .content{position:relative;z-index:2;width:100%;height:100vh;padding:8.6%;display:flex;flex-direction:column}
+  .top{display:flex;align-items:flex-start;justify-content:space-between}
+  .logo{width:84px;height:84px;background:#EF4444;border-radius:22px;position:relative;flex-shrink:0;box-shadow:0 10px 30px rgba(239,68,68,.22)}
+  .logo::after{content:"";position:absolute;inset:25px;background:#fff;border-radius:9px}
+  .kick{text-align:right;font-size:19px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#EF4444;padding-top:8px}
+
+  .mid{margin-top:auto;margin-bottom:auto;position:relative}
+  .mark{font-family:'Oranienbaum',serif;font-size:240px;line-height:.6;color:#EF4444;height:120px;display:block}
+  .quote{font-family:'Oranienbaum',serif;font-size:68px;line-height:1.12;letter-spacing:-.005em;color:#0E0E2A;margin-top:18px;max-width:17ch}
+  .quote em{font-style:normal;color:#EF4444}
+  .attrib{display:flex;align-items:center;gap:18px;margin-top:38px}
+  .attrib .rule{width:56px;height:4px;background:#EF4444;border-radius:2px}
+  .attrib span{font-size:23px;font-weight:600;color:rgba(14,14,42,.62);letter-spacing:.02em}
+
+  .foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+  .site{font-size:29px;font-weight:700;color:#0E0E2A}
+  .cta{background:#EF4444;color:#fff;font-weight:700;font-size:23px;padding:18px 32px;border-radius:14px;box-shadow:0 12px 30px rgba(239,68,68,.3)}
+</style></head><body>
+  <div class="content">
+    <div class="top">
+      <div class="logo"></div>
+      <div class="kick">The Atlas<br>Drops June 1</div>
+    </div>
+    <div class="mid">
+      <span class="mark">&ldquo;</span>
+      <div class="quote">Every energy desk can quote <em>$147 billion.</em> Almost none can name the nine utilities that absorbed it.</div>
+      <div class="attrib"><div class="rule"></div><span>The thesis behind the AI Energy Demand Atlas</span></div>
+    </div>
+    <div class="foot">
+      <div class="site">Ghostresearch.com</div>
+      <div class="cta">Read the Atlas &rarr;</div>
+    </div>
+  </div>
+</body></html>

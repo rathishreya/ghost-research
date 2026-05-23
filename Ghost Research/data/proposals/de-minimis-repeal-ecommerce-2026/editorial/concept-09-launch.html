@@ -1,0 +1,52 @@
+<!doctype html><html><head><meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#F8F8FF;--red:#EF4444;--blob-stroke:rgba(248,248,255,.12)}
+body{width:100%;height:100vh;font-family:'Manrope',sans-serif;color:var(--ink);position:relative;overflow:hidden;background:linear-gradient(150deg,#181650 0%,#06062D 100%)}
+.frame{position:absolute;inset:18px;border:2px solid var(--red);border-radius:28px;z-index:3;pointer-events:none}
+.blob-ring{position:absolute;z-index:0;bottom:-14%;right:-8%;width:48%;aspect-ratio:1;border-radius:50%;border:1.5px solid var(--blob-stroke)}
+.wrap{position:relative;z-index:1;height:100%;padding:8.5%;display:flex;flex-direction:column;justify-content:space-between}
+.mast{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(248,248,255,.22);padding-bottom:2.2vh}
+.brand{display:flex;align-items:center;gap:16px}
+.gh-logo{width:clamp(64px,7.5vh,90px);height:clamp(64px,7.5vh,90px)}.gh-logo svg{width:100%;height:100%;display:block}
+.wm{font-weight:800;letter-spacing:.16em;font-size:clamp(22px,2.6vh,30px)}
+.pub{font-size:clamp(17px,2vh,20px);font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-align:right;line-height:1.5;color:rgba(248,248,255,.8)}
+.pub .red{color:var(--red)}
+.btm{display:flex;flex-direction:column;gap:2.4vh}
+.eyebrow{font-size:clamp(18px,2.1vh,21px);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.h1{font-family:'Oranienbaum',serif;font-size:clamp(60px,8.6vh,112px);line-height:1.0;max-width:14ch}
+.h1 em{font-style:italic;color:var(--red)}
+.rule{height:1px;width:100%;background:rgba(248,248,255,.22)}
+.list{display:flex;flex-direction:column;gap:1.2vh}
+.li{display:flex;gap:16px;align-items:baseline;font-size:clamp(22px,2.6vh,30px);color:rgba(248,248,255,.9)}
+.li b{color:var(--red)}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:#fff;padding:16px 28px;border-radius:8px;font-weight:700;font-size:clamp(22px,2.4vh,26px);width:fit-content}
+.foot{display:flex;justify-content:space-between;align-items:flex-end;gap:18px}
+.url{font-size:clamp(19px,2.1vh,23px);font-weight:600}
+.cred{font-size:clamp(19px,2vh,21px);color:rgba(248,248,255,.62);text-align:right}
+</style></head>
+<body>
+<div class="frame"></div><div class="blob-ring"></div>
+<div class="wrap">
+  <div class="mast">
+    <div class="brand">
+      <div class="gh-logo" aria-label="Ghost Research"><svg viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#EF4444"/><circle cx="50" cy="50" r="19" fill="#fff"/></svg></div>
+      <div class="wm">GHOST RESEARCH</div>
+    </div>
+    <div class="pub">The De-Minimis Reset<br><span class="red">Available now</span></div>
+  </div>
+  <div class="btm">
+    <div class="eyebrow">It's live</div>
+    <h1 class="h1">The <em>$147B</em> landed-cost map is published.</h1>
+    <div class="rule"></div>
+    <div class="list">
+      <div class="li"><b>·</b>The China→EU lane, modeled band by band.</div>
+      <div class="li"><b>·</b>Where margin breaks first — and which SKUs to touch.</div>
+      <div class="li"><b>·</b>The Shein &amp; Temu localization response, mapped.</div>
+    </div>
+    <span class="cta">Read the brief →</span>
+    <div class="foot"><span class="url">Ghostresearch.com</span><span class="cred">EXPERT-VETTED · FULLY CITED</span></div>
+  </div>
+</div>
+</body></html>

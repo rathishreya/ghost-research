@@ -332,21 +332,37 @@ ghostresearch.com/ghost-elite enquiry form
 
 ### SECTION 0.3: HOOK ENGINE
 
-Three distinct hooks for this report. Each must be meaningfully different.
+Three distinct hooks for this report. Each must be meaningfully different — AND each must use a different **information-gap mechanism** from the list below. Generic "Discover insights..." or "Stay ahead of..." copy is forbidden — it's wallpaper, every B2B competitor ships it, and it loses scroll-stop.
 
-**🔒 Critical:** Hooks 1 and 2 must be **hype-safe** — they work in Week 1 without revealing report content. Hook 3 is **content-active** — it can reference actual findings from the published report, and is used in Week 2.
+**🔒 Mechanism choice (each hook picks ONE, name it in brackets):**
+- **Named villain** — a specific rule/stat/change kills X. e.g. "The SEC rule that just gutted Q3 SaaS valuations"
+- **Contrarian counter** — everyone thinks X; actually Y. e.g. "Every Series C VP-Finance is wrong about AI ROI"
+- **Hidden cost** — the line nobody is pricing in. e.g. "The $1.4M line item every AI vendor RFP forgets"
+- **Time-decay urgency** — a named window. e.g. "The 90-day window before AI margin compression hits"
+- **Specificity over category** — a real $/% number, not a vibe. e.g. "The $4.2T capital reallocation nobody is naming"
+- **Insider POV** — the role-specific take. e.g. "The three pages every IPO syndicate MD now rips out of the S-1 first"
 
-**Hook 1 — [Name the angle, e.g. "The Question Hook"] — WEEK 1 SAFE**
-- [Full first line of ad, written out. Must NOT reference specific findings from the report. Asks a question, names a pain, or frames a category.]
+**🔒 Critical structural rule:** Hooks 1 and 2 must be **hype-safe** — they work in Week 1 without revealing report content. Hook 3 is **content-active** — it can reference actual findings from the published report, and is used in Week 2.
+
+**Hook 1 — [Mechanism in brackets, e.g. "[Named villain]"] — WEEK 1 SAFE**
+- [Full first line of ad, written out. Uses the chosen mechanism. Must NOT reference specific findings from the report — frame the question, the villain, the hidden cost, or the role at stake without revealing the answer.]
+- Why it works for this audience: [One sentence — name which information gap it creates.]
+
+**Hook 2 — [Different mechanism in brackets] — WEEK 1 SAFE**
+- [Full first line of ad, written out. Different mechanism from Hook 1. Still hype-safe.]
 - Why it works for this audience: [One sentence.]
 
-**Hook 2 — [Name the angle, e.g. "The Stakes Hook"] — WEEK 1 SAFE**
-- [Full first line of ad, written out. Must NOT reference specific findings. Names what's at risk or what's at stake without revealing the answer.]
+**Hook 3 — [Different mechanism, typically "Specificity over category" or "Insider POV" since these need the report's actual data] — WEEK 2 ONLY**
+- [Full first line of ad. Reveals a headline finding, stat, or specific insight from the report — only used Day 8+ when the report is live.]
 - Why it works for this audience: [One sentence.]
 
-**Hook 3 — [Name the angle, e.g. "The Finding Hook"] — WEEK 2 ONLY**
-- [Full first line of ad, written out. Can reveal a headline finding, stat, or specific insight from the report — but only used Day 8+ when the report is live.]
-- Why it works for this audience: [One sentence.]
+**Pre-flight test — apply to all three hooks before locking the brief:**
+1. Does it create a curiosity gap (you can't satisfy it without reading the report)?
+2. Could it appear in a competitor's ad with one word changed? (If yes — rewrite.)
+3. Is there a real specific in it (number, rule name, role, date, $ figure)?
+4. Does it sound institutional, not cheap-bait? (No "5 secrets", no "you won't believe".)
+
+A hook passes only on **yes / no / yes / yes**.
 
 **Hook assignment:**
 - Hook 1 → Week 1 Days 1-4 (awareness)

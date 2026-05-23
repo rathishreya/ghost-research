@@ -57,12 +57,47 @@ Topic research and proposals should fish across all of these — not just AI-nat
 
 ### Visual identity (every ad must respect)
 
+- **🔒 Icon mark on every image / video / VFX frame — NO EXCEPTIONS.** Source: `Ghost Research/assets/brand/logo-mark.svg` (or `logo-mark.png`, 512×512 transparent). It is a `#EF4444` red rounded-square with a white inset circle. Top-left placement, badge size 88–112px on 1080-wide canvas. Works as-is on dark and light backgrounds. No text wordmark substitute. Stays visible on every video frame including transitions and VFX.
 - Primary red `#EF4444` for CTAs and accents (one focal point per frame)
 - Deep indigo / navy backgrounds (`#181650` → `#06062D` gradient)
 - Light backgrounds: `#F8F8FF`, `#F1F3FF`
 - Fonts: Oranienbaum (serif) for headlines, Manrope for body
 - Imagery: real professionals with data, dashboards, charts — color-graded to deep indigo
 - ❌ Forbidden: robots, AI clichés, glowing nodes, holograms, neon, high-fives, AI-generated faces, sci-fi UI
+
+### Style presets (the named looks you can ask for)
+
+`/design-ads` and `/write-prompts` read a shared **Style Preset Library** at
+`Ghost Research/.claude/skills/_shared/style-presets.md` with 9 named looks:
+**luxury · startup · cinematic · SaaS · UI-heavy · suspense** (aesthetics) and
+**Instagram · Meta · landing-page banner** (placements that lock format). Just ask —
+"design the ads in a luxury style", "make UI-heavy SaaS creatives", "/design-ads
+cinematic + suspense", "I need landing-page banners". Aesthetics + placements combine
+("Instagram + Cinematic"). Every preset still obeys the visual identity above and the
+hard rules (logo on every frame, no price in ad copy, institutional voice, no AI clichés).
+The presets change the *look*; they never break the brand. These are still rendered by
+the existing free generators (Pollinations FLUX / editorial HTML / animate) — a preset is
+a recipe, not a new tool.
+
+### Approved template library (the looks Shreyanshi signed off on)
+
+`/design-ads` and `/write-prompts` build every card from a named layout in
+`.claude/skills/_shared/template-library.md` — six approved templates (Dark Photo Hero ·
+Journal Cover · Pull-Quote · Light Stat Card · Carousel · Light Banner) plus a list of
+banned, campaign-killer patterns — derived from a file-by-file taste review. It owns the
+alignment law (headline + stat + sub in one bottom-anchored column), blob structures
+behind light cards, footer font sizes, the masthead lockup, and the carousel-consistency
+rule. **Videos are paused (2026-05-23) — generation is image-only unless you ask for video.**
+
+### Design intelligence (RavenMCP — advisory, not a generator)
+
+The project can connect **RavenMCP** (`raven`), a free open-source MCP server that serves
+*design knowledge* — UI patterns, design tokens (Stripe/Linear/Apple), 2026 visual trends,
+brand-voice systems. It does **not** generate images or video. `/design-ads` and
+`/write-prompts` consult it to sharpen the UI-heavy / SaaS / landing-page-banner / luxury
+presets, then translate its guidance into Ghost-locked specs. It's optional — every preset
+works without it. (Setup: a `raven` entry in `.mcp.json` at the repo root; approve it on
+the next Claude Code launch.)
 
 ---
 

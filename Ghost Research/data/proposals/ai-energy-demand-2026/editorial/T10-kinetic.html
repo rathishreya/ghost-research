@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%}
+  body{position:relative;overflow:hidden;width:1080px;height:1920px;color:#F6F6FC;
+    font-family:'Manrope',system-ui,sans-serif;
+    background:radial-gradient(120% 80% at 50% 30%, #1A1858 0%, #0C0B34 56%, #06062D 100%);
+    -webkit-font-smoothing:antialiased}
+
+  .logo{position:absolute;top:84px;left:84px;width:96px;height:96px;background:#EF4444;border-radius:24px;z-index:5;
+    opacity:0;animation:in .6s ease forwards;box-shadow:0 10px 34px rgba(239,68,68,.34)}
+  .logo::after{content:"";position:absolute;inset:29px;background:#fff;border-radius:10px}
+
+  .stage{position:absolute;inset:0;display:grid;place-items:center;z-index:3}
+  .phase{position:absolute;width:86%;text-align:center;opacity:0}
+  .p1{animation:flash 3.2s ease .6s both}
+  .p2{animation:flash 2.7s ease 3.9s both}
+  .p3{animation:flash 2.4s ease 6.5s both}
+
+  .big{font-family:'Oranienbaum',serif;font-size:340px;line-height:.86;color:#EF4444;letter-spacing:-.04em;text-shadow:0 10px 50px rgba(239,68,68,.25)}
+  .cap{font-size:54px;font-weight:600;color:rgba(246,246,252,.82);margin-top:6px;letter-spacing:.01em}
+  .line{font-family:'Oranienbaum',serif;font-size:96px;line-height:1.08;color:#fff}
+  .line em{font-style:normal;color:#FF6A5C}
+
+  .endcard{position:absolute;width:86%;text-align:center;opacity:0;animation:endin 1s ease 8.7s both;z-index:4}
+  .ek{font-size:30px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#FF6A5C}
+  .et{font-family:'Oranienbaum',serif;font-size:108px;line-height:1.0;margin-top:18px}
+  .erule{width:120px;height:5px;background:#EF4444;border-radius:3px;margin:30px auto}
+  .ed{font-size:42px;font-weight:600;color:rgba(246,246,252,.9)}
+  .cta{display:inline-block;margin-top:40px;background:#EF4444;color:#fff;font-weight:700;font-size:38px;padding:26px 52px;border-radius:18px;box-shadow:0 16px 40px rgba(239,68,68,.4)}
+
+  .prog{position:absolute;left:0;bottom:0;height:8px;background:#EF4444;width:0;z-index:6;animation:grow 11s linear forwards;box-shadow:0 0 20px rgba(239,68,68,.6)}
+
+  @keyframes in{from{opacity:0}to{opacity:1}}
+  @keyframes endin{0%{opacity:0;transform:translateY(34px)}100%{opacity:1;transform:none}}
+  @keyframes grow{from{width:0}to{width:100%}}
+  @keyframes flash{0%{opacity:0;transform:translateY(46px)}11%{opacity:1;transform:none}80%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-34px)}}
+</style></head><body>
+  <div class="logo"></div>
+  <div class="stage">
+    <div class="phase p1"><div class="big">$147B</div><div class="cap">in announced AI capex</div></div>
+    <div class="phase p2"><div class="line">landed on just<br><em>nine utilities.</em></div></div>
+    <div class="phase p3"><div class="line">Almost nobody<br>mapped <em>which nine.</em></div></div>
+  </div>
+  <div class="endcard">
+    <div class="ek">The AI Energy Demand Atlas</div>
+    <div class="et">The Atlas<br>does.</div>
+    <div class="erule"></div>
+    <div class="ed">Drops June 1, 2026 &middot; Ghostresearch.com</div>
+    <div class="cta">Read the Atlas &rarr;</div>
+  </div>
+  <div class="prog"></div>
+  <script>setTimeout(function(){window.__GHOST_DONE=true;}, 11000);</script>
+</body></html>

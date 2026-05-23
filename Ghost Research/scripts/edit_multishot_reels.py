@@ -37,10 +37,11 @@ from animate_image import build_text_overlay_png, make_video, ASPECT_TO_DIMS
 
 
 def render_kenburns_clip(input_image: Path, out_path: Path, *, aspect: str,
-                         duration: float, motion: str, fps: int = 30) -> None:
-    """Render a single Ken-Burns clip without text overlay (we add text only on the final frame)."""
+                         duration: float, motion: str, fps: int = 30,
+                         overlay: tuple[str, str, str, str] | None = None) -> None:
+    """Render a single Ken-Burns clip, optionally with a persistent text overlay (headline+sub+cta+eyebrow)."""
     make_video(input_image, out_path, aspect=aspect, duration=duration,
-               motion=motion, fps=fps, overlay=None)
+               motion=motion, fps=fps, overlay=overlay)
 
 
 def build_text_card_clip(width: int, height: int, *,
@@ -167,16 +168,19 @@ def main() -> int:
     print(f"  output:   {out_path}")
     print()
 
+    # Build persistent overlay tuple — applied to every Ken-Burns clip so text is on every frame
+    overlay_tuple = (args.headline, args.sub, args.cta, "GHOST RESEARCH")
+
     tmpdir = Path(tempfile.mkdtemp(prefix="ghost-multishot-"))
     try:
         clip_paths: list[Path] = []
-        # Ken-Burns clips
+        # Ken-Burns clips — now with persistent headline+sub+cta+eyebrow overlay on every frame
         for i, src in enumerate(src_paths):
             motion = MOTIONS[i % len(MOTIONS)]
             clip_path = tmpdir / f"clip-{i:02d}.mp4"
-            print(f"  [{i+1}/{len(src_paths)+1}] {src.name} -> {motion}, {args.clip_duration}s")
+            print(f"  [{i+1}/{len(src_paths)+1}] {src.name} -> {motion}, {args.clip_duration}s (with persistent overlay)")
             render_kenburns_clip(src, clip_path, aspect=aspect, duration=args.clip_duration,
-                                 motion=motion, fps=args.fps)
+                                 motion=motion, fps=args.fps, overlay=overlay_tuple)
             clip_paths.append(clip_path)
 
         # Final text card

@@ -1,0 +1,43 @@
+<!doctype html><html><head><meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:Manrope,sans-serif;color:#F8F8FF;-webkit-font-smoothing:antialiased;background:#000}
+.stage{position:absolute;inset:0;overflow:hidden}
+.grain{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:3px 3px;mix-blend-mode:screen;z-index:99}
+.s1{position:absolute;inset:0;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:0 88px;opacity:1;animation:s1out .8s ease 3.6s forwards;text-align:center}
+.s1 .wm{font-family:Oranienbaum,serif;font-size:30px;color:rgba(248,248,255,.92);margin-bottom:50px;opacity:0;animation:rise .9s ease .2s forwards}
+.s1 .wm i{color:#EF4444;font-style:normal}
+.s1 .ask{font-family:Manrope,sans-serif;font-size:24px;letter-spacing:.04em;color:rgba(248,248,255,.66);font-weight:500;margin-bottom:30px;opacity:0;animation:rise .8s ease 1.2s forwards}
+.s1 .q{font-family:Oranienbaum,serif;font-size:74px;line-height:1.06;color:#F8F8FF;max-width:15ch;opacity:0;transform:translateY(14px);animation:rise 1.1s cubic-bezier(.2,.7,.2,1) 2.0s forwards}
+.s1 .q em{color:#EF4444;font-style:italic}
+.s2{position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.48) 38%,rgba(0,0,0,.90) 78%,rgba(0,0,0,.99) 100%),url("file:///C:/Users/Shreyanshi%20Rathi/Desktop/Ghost%20research/Ghost%20Research/data/proposals/vsaas-bloodbath-2026/assets/P06-partner-dawn-read.jpg");background-size:cover;background-position:center;transform:scale(1.05);opacity:0;animation:s2in 1.0s ease 3.6s forwards, s2zoom 3.5s linear 3.6s forwards, s2out .8s ease 6.8s forwards}
+.s2 .pull{position:absolute;left:88px;right:88px;bottom:240px;font-family:Oranienbaum,serif;font-size:84px;line-height:1.04;color:#EF4444;font-style:italic;text-shadow:0 4px 28px rgba(0,0,0,.78);opacity:0;animation:rise 1.0s ease 4.4s forwards}
+.s2 .meta{position:absolute;left:88px;bottom:150px;font-size:14px;letter-spacing:.30em;text-transform:uppercase;color:rgba(248,248,255,.66);font-weight:700;opacity:0;animation:rise .8s ease 5.4s forwards;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.s3{position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(0,0,0,.10) 0%,rgba(0,0,0,.40) 35%,rgba(0,0,0,.86) 75%,rgba(0,0,0,.99) 100%),url("file:///C:/Users/Shreyanshi%20Rathi/Desktop/Ghost%20research/Ghost%20Research/data/proposals/vsaas-bloodbath-2026/assets/P01-empty-saas-office.jpg");background-size:cover;background-position:center;opacity:0;animation:s3in 1.0s ease 6.8s forwards}
+.s3 .frame{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:0 88px;text-align:center}
+.s3 .label{font-size:13px;letter-spacing:.30em;text-transform:uppercase;color:#EF4444;font-weight:800;margin-bottom:24px;opacity:0;animation:rise .8s ease 7.2s forwards}
+.s3 .num{font-family:Oranienbaum,serif;font-size:380px;line-height:.84;letter-spacing:-.045em;color:#F8F8FF;text-shadow:0 0 80px rgba(239,68,68,.40);opacity:0;transform:scale(.92);animation:numrise 1.0s cubic-bezier(.2,.7,.2,1) 7.5s forwards, glow 1.6s ease 8.6s infinite}
+.s3 .num .ru{color:#EF4444}
+.s3 .rule{width:0;height:1.5px;background:#EF4444;margin-top:30px;animation:grow .9s ease 8.5s forwards}
+.s3 .ctx{margin-top:22px;font-family:Oranienbaum,serif;font-size:34px;line-height:1.2;color:rgba(248,248,255,.86);max-width:22ch;text-shadow:0 2px 16px rgba(0,0,0,.65);opacity:0;animation:rise .9s ease 8.8s forwards}
+.s3 .cta{position:absolute;bottom:130px;left:50%;transform:translateX(-50%) translateY(10px);font-family:Manrope,sans-serif;font-size:22px;font-weight:800;color:#fff;background:#EF4444;padding:18px 30px;border-radius:4px;box-shadow:0 10px 32px rgba(239,68,68,.40);opacity:0;animation:rise .8s ease 9.2s forwards}.s3 .cta::after{content:"  →"}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes s1out{to{opacity:0}}
+@keyframes s2in{to{opacity:1}}
+@keyframes s2zoom{to{transform:scale(1.18)}}
+@keyframes s2out{to{opacity:0}}
+@keyframes s3in{to{opacity:1}}
+@keyframes numrise{to{opacity:1;transform:scale(1)}}
+@keyframes glow{0%,100%{text-shadow:0 0 80px rgba(239,68,68,.40)}50%{text-shadow:0 0 140px rgba(239,68,68,.72)}}
+@keyframes grow{to{width:130px}}
+</style>
+<script>window.addEventListener("load",()=>setTimeout(()=>window.__GHOST_DONE=true,10000));</script>
+</head><body>
+<div class="stage">
+  <div class="s1"><div class="wm">Ghost Research<i>.</i></div><div class="ask">Every PE partner is about to ask:</div><div class="q">What did the <em>20</em> have that the rest didn't?</div></div>
+  <div class="s2"><div class="pull">"Read the patterns before the recap."</div><div class="meta">The vSaaS Bloodbath audit · Drops June 15</div></div>
+  <div class="s3"><div class="frame"><div class="label">— Vertical SaaS audited · 2025 cohort —</div><div class="num">80 <span class="ru">/ 20</span></div><div class="rule"></div><div class="ctx">The 12 patterns nobody published.</div></div><div class="cta">Get on the list</div></div>
+  <div class="grain"></div>
+</div>
+</body></html>

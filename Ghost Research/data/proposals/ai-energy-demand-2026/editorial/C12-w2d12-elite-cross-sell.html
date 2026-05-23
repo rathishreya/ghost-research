@@ -1,0 +1,52 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+ *{box-sizing:border-box;margin:0;padding:0}
+  .gh-logo{display:inline-flex;flex-direction:column;gap:2px;align-items:flex-start;line-height:1;font-family:'Oranienbaum',serif;color:#FFFFFF;text-decoration:none}
+  .gh-logo .r1{display:flex;align-items:center;font-size:42px;letter-spacing:-.01em;font-weight:400}
+  .gh-logo .sq{position:relative;width:34px;height:34px;background:#EF4444;border-radius:7px;display:inline-block;margin:0 3px;flex-shrink:0;align-self:center;transform:translateY(2px)}
+  .gh-logo .sq::after{content:"";position:absolute;inset:11px;background:#FFFFFF;border-radius:2px}
+  .gh-logo .r2{font-size:18px;letter-spacing:.42em;font-weight:400;color:#FFFFFF;margin-left:1px;margin-top:3px}
+  .gh-logo.dark .r1, .gh-logo.dark .r2{color:#000000}
+  body{background:#06062D;font-family:'Manrope',sans-serif;color:#FFFFFF;
+    width:100%;height:100vh;overflow:hidden;position:relative}
+  .photo{position:absolute;inset:0;background:
+    linear-gradient(180deg, rgba(6,6,45,0.0) 0%, rgba(6,6,45,0.92) 100%),
+    url("file:///C:/Users/Shreyanshi%20Rathi/Desktop/Ghost%20research/Ghost%20Research/data/proposals/ai-energy-demand-2026/assets/P08-analyst-two-documents.jpg") center/cover no-repeat;}
+  .logo-pos{position:absolute;top:6.5%;left:6.5%;z-index:3}
+  .versus{position:absolute;top:20%;left:6.5%;right:6.5%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;z-index:2}
+  .col{text-align:center}
+  .col-label{font-size:18px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:8px}
+  .col-num{font-family:'Oranienbaum',serif;font-size:clamp(140px,20vh,220px);line-height:.86;letter-spacing:-.04em;color:#FFFFFF}
+  .col.right .col-num{color:#EF4444}
+  .col-cap{font-size:16px;color:rgba(255,255,255,.78);letter-spacing:.08em;margin-top:8px;text-transform:uppercase;font-weight:600}
+  .vs{font-family:'Oranienbaum',serif;font-style:italic;font-size:58px;color:#EF4444}
+  .bottom{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg, rgba(6,6,45,0) 0%, #06062D 50%);padding:18% 6.5% 6.5%;z-index:2}
+  .eyebrow{font-size:18px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#EF4444;margin-bottom:14px}
+  .h1{font-family:'Oranienbaum',serif;font-size:clamp(46px,6.4vh,64px);line-height:1.04;letter-spacing:-.01em;color:#FFFFFF;max-width:22ch;margin-bottom:14px}
+  .h1 em{font-style:italic;color:#EF4444}
+  .sub{font-family:'Manrope',sans-serif;font-size:22px;font-weight:500;color:rgba(255,255,255,.85);max-width:42ch;margin-bottom:22px;line-height:1.4}
+  .cta-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+  .cta{display:inline-flex;background:#EF4444;color:#FFFFFF;padding:22px 36px;border-radius:3px;font-weight:800;font-size:24px;letter-spacing:.02em;gap:14px}
+  .cta:after{content:"→"}
+  .footer{font-size:17px;font-weight:600;letter-spacing:.06em;color:rgba(255,255,255,.78)}
+</style></head>
+<body>
+  <div class="photo"></div>
+  <div class="logo-pos"><div class="gh-logo"><div class="r1">GH<span class="sq"></span>ST</div><div class="r2">RESEARCH</div></div></div>
+  <div class="versus">
+    <div class="col"><div class="col-label">Atlas covers</div><div class="col-num">9</div><div class="col-cap">utilities · public</div></div>
+    <div class="vs">vs</div>
+    <div class="col right"><div class="col-label">Your book has</div><div class="col-num">17</div><div class="col-cap">24 hrs · Elite</div></div>
+  </div>
+  <div class="bottom">
+    <div class="eyebrow">Ghost Elite · 24-hr custom mandate</div>
+    <div class="h1">The Atlas is the public version. <em>Your portfolio gets the private one.</em></div>
+    <div class="sub">Brief our SMEs. Custom-scoped atlas. Expert-vetted. Fixed-fee. 24 hours.</div>
+    <div class="cta-row">
+      <a class="cta">Brief our experts</a>
+      <div class="footer">ghostresearch.com/elite</div>
+    </div>
+  </div>
+</body></html>

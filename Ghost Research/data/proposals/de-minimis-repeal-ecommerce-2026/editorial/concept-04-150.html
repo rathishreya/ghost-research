@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#0B0B14;--red:#EF4444;--blob-stroke:rgba(239,68,68,.22);--blob-fill:rgba(239,68,68,.08)}
+body{width:100%;height:100vh;font-family:'Manrope',sans-serif;color:var(--ink);position:relative;overflow:hidden;background:#F1F3FF}
+.blob-ring{position:absolute;z-index:0;top:-14%;right:-10%;width:50%;aspect-ratio:1;border-radius:50%;border:1.5px solid var(--blob-stroke)}
+.blob-soft{position:absolute;z-index:0;bottom:-12%;left:-8%;width:44%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--blob-fill),transparent 70%);filter:blur(8px)}
+.wrap{position:relative;z-index:1;height:100%;padding:8.5%;display:flex;flex-direction:column;justify-content:space-between}
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.gh-logo{width:clamp(72px,8.5vh,100px);height:clamp(72px,8.5vh,100px)}.gh-logo svg{width:100%;height:100%;display:block}
+.mast{font-family:'Oranienbaum',serif;font-size:clamp(20px,2.4vh,26px);letter-spacing:.03em;text-align:right;line-height:1.3}
+.mast b{color:#000}
+.btm{display:flex;flex-direction:column;gap:3vh}
+.col{display:flex;flex-direction:column;align-items:flex-start;gap:2vh;padding-left:26px;border-left:4px solid var(--red)}
+.eyebrow{font-size:clamp(18px,2.1vh,21px);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.stat{font-family:'Oranienbaum',serif;font-size:clamp(130px,21vh,250px);line-height:.9;letter-spacing:-.03em;color:#000}
+.stat em{font-style:normal;color:var(--red)}
+.sub{font-size:clamp(24px,2.8vh,32px);color:var(--ink);line-height:1.4;max-width:26ch}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:#fff;padding:16px 28px;border-radius:8px;font-weight:700;font-size:clamp(22px,2.4vh,26px)}
+.foot{display:flex;justify-content:space-between;align-items:flex-end;gap:18px}
+.url{font-size:clamp(19px,2.1vh,23px);font-weight:700;color:#000}
+.cred{font-size:clamp(19px,2vh,21px);color:rgba(11,11,20,.6);text-align:right;max-width:26ch;line-height:1.4}
+</style></head>
+<body class="light">
+<div class="blob-ring"></div><div class="blob-soft"></div>
+<div class="wrap">
+  <div class="top">
+    <div class="gh-logo" aria-label="Ghost Research"><svg viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#EF4444"/><circle cx="50" cy="50" r="19" fill="#fff"/></svg></div>
+    <div class="mast"><b>GHOST RESEARCH</b><br>De-minimis reset · drops 7 June</div>
+  </div>
+  <div class="btm">
+    <div class="col">
+      <div class="eyebrow">The threshold that disappears</div>
+      <div class="stat">€150 <em>→ ?</em></div>
+      <div class="sub">The free-clearance threshold every cross-border SKU relied on closes 1 July.</div>
+      <span class="cta">Notify me on launch →</span>
+    </div>
+    <div class="foot"><span class="url">Ghostresearch.com</span><span class="cred">1M+ curated sources · transparent citation · expert-vetted</span></div>
+  </div>
+</div>
+</body></html>

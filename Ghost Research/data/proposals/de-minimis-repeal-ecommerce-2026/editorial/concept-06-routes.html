@@ -1,0 +1,49 @@
+<!doctype html><html><head><meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#F8F8FF;--red:#EF4444}
+body{width:100%;height:100vh;font-family:'Manrope',sans-serif;color:var(--ink);position:relative;overflow:hidden;background:linear-gradient(135deg,#181650 0%,#06062D 100%)}
+.frame{position:absolute;inset:18px;border:2px solid var(--red);border-radius:28px;z-index:3;pointer-events:none}
+.map{position:absolute;inset:0;z-index:0}
+.lbl{font-size:20px;fill:rgba(248,248,255,.7);font-family:'Manrope',sans-serif}
+.wrap{position:relative;z-index:1;height:100%;padding:8.5%;display:flex;flex-direction:column;justify-content:space-between}
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.gh-logo{width:clamp(72px,8.5vh,100px);height:clamp(72px,8.5vh,100px)}.gh-logo svg{width:100%;height:100%;display:block}
+.eyebrow{font-size:clamp(18px,2.1vh,21px);font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-align:right;color:var(--red)}
+.btm{display:flex;flex-direction:column;gap:3vh}
+.col{display:flex;flex-direction:column;align-items:flex-start;gap:2.2vh;max-width:20ch}
+.h1{font-family:'Oranienbaum',serif;font-size:clamp(58px,8vh,100px);line-height:1.02}
+.h1 em{font-style:italic;color:var(--red)}
+.sub{font-size:clamp(22px,2.6vh,29px);color:rgba(248,248,255,.82);line-height:1.45;max-width:28ch}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:#fff;padding:16px 28px;border-radius:8px;font-weight:700;font-size:clamp(22px,2.4vh,26px)}
+.foot{display:flex;justify-content:space-between;align-items:flex-end;gap:18px}
+.url{font-size:clamp(19px,2.1vh,23px);font-weight:600}
+.cred{font-size:clamp(19px,2vh,21px);color:rgba(248,248,255,.62);text-align:right;max-width:26ch;line-height:1.4}
+</style></head>
+<body>
+<svg class="map" viewBox="0 0 1080 1080" preserveAspectRatio="xMidYMid slice">
+  <g fill="none" stroke="rgba(248,248,255,.10)" stroke-width="1"><path d="M0 360 H1080 M0 540 H1080 M0 720 H1080 M360 0 V1080 M720 0 V1080"/></g>
+  <circle cx="250" cy="430" r="9" fill="rgba(248,248,255,.55)"/>
+  <path d="M250 430 C 500 340, 760 330, 980 320" stroke="rgba(248,248,255,.35)" stroke-width="3" stroke-dasharray="2 12" fill="none"/>
+  <path d="M250 430 C 420 470, 560 560, 640 660" stroke="#EF4444" stroke-width="4" fill="none"/>
+  <rect x="620" y="652" width="40" height="40" rx="6" fill="#EF4444"/>
+  <text x="980" y="300" class="lbl" text-anchor="end">old direct lane</text>
+  <text x="672" y="690" class="lbl">local fulfilment</text>
+</svg>
+<div class="frame"></div>
+<div class="wrap">
+  <div class="top">
+    <div class="gh-logo" aria-label="Ghost Research"><svg viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#EF4444"/><circle cx="50" cy="50" r="19" fill="#fff"/></svg></div>
+    <div class="eyebrow">The competitive response</div>
+  </div>
+  <div class="btm">
+    <div class="col">
+      <h1 class="h1">Shein re-localized. Have you <em>re-modeled?</em></h1>
+      <div class="sub">The rule is everywhere. The math isn't. The landed-cost model drops 7 June.</div>
+      <span class="cta">Get the model when it drops →</span>
+    </div>
+    <div class="foot"><span class="url">Ghostresearch.com</span><span class="cred">1M+ curated sources · transparent citation · expert-vetted</span></div>
+  </div>
+</div>
+</body></html>

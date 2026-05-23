@@ -1,0 +1,73 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%}
+  body{position:relative;overflow:hidden;width:100%;height:100vh;color:#EAEAF6;
+    font-family:'Manrope',system-ui,sans-serif;
+    background:radial-gradient(120% 90% at 80% 0%, #181650 0%, #0B0A30 52%, #06062D 100%);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .wrap{position:relative;z-index:2;width:100%;height:100vh;padding:7%;display:flex;flex-direction:column}
+
+  .top{display:flex;align-items:flex-start;justify-content:space-between}
+  .logo{width:78px;height:78px;background:#EF4444;border-radius:20px;position:relative;flex-shrink:0;box-shadow:0 8px 26px rgba(239,68,68,.3)}
+  .logo::after{content:"";position:absolute;inset:23px;background:#fff;border-radius:8px}
+  .kick{text-align:right;font-size:18px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#9C9AD8}
+  .kick b{color:#EAEAF6;display:block;font-size:21px;letter-spacing:.04em;margin-top:6px}
+
+  .head{margin-top:7%}
+  .h1{font-weight:800;font-size:46px;line-height:1.08;letter-spacing:-.015em;color:#fff;max-width:20ch}
+
+  .tiles{display:flex;gap:18px;margin-top:30px}
+  .tile{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:24px 22px}
+  .tile.hot{background:rgba(239,68,68,.14);border-color:rgba(239,68,68,.5)}
+  .tnum{font-family:'Oranienbaum',serif;font-size:64px;line-height:.9;color:#fff}
+  .tile.hot .tnum{color:#FF6A5C}
+  .tlbl{font-size:18px;color:#A6A4DC;margin-top:8px;font-weight:500}
+
+  .panel{margin-top:26px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:26px 28px;flex:1}
+  .ptitle{font-size:19px;font-weight:700;letter-spacing:.04em;color:#C9C7F0;margin-bottom:18px;display:flex;justify-content:space-between}
+  .ptitle span{color:#7C7AC0;font-weight:600}
+  .row{display:flex;align-items:center;gap:16px;padding:13px 0;border-top:1px solid rgba(255,255,255,.07)}
+  .rname{width:150px;font-size:21px;font-weight:600;color:#EAEAF6}
+  .rname.lock{color:#6E6CB0;font-weight:500}
+  .bar{flex:1;height:14px;border-radius:7px;background:rgba(255,255,255,.07);overflow:hidden}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,#EF4444,#FF7A6E);border-radius:7px}
+  .bar.mut i{background:rgba(124,122,192,.5)}
+  .rval{width:96px;text-align:right;font-size:22px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
+  .rval.lock{color:#6E6CB0;font-weight:600}
+
+  .foot{display:flex;align-items:center;justify-content:space-between;margin-top:24px}
+  .src{font-size:17px;color:#8482C4;font-weight:500}
+  .cta{background:#EF4444;color:#fff;font-weight:700;font-size:22px;padding:16px 30px;border-radius:13px;box-shadow:0 12px 30px rgba(239,68,68,.34)}
+</style></head><body>
+  <div class="wrap">
+    <div class="top">
+      <div class="logo"></div>
+      <div class="kick">AI Energy Demand Atlas<b>It's live · June 1</b></div>
+    </div>
+    <div class="head"><div class="h1">Every utility. Every filing. One exposure map.</div></div>
+
+    <div class="tiles">
+      <div class="tile"><div class="tnum">$147B</div><div class="tlbl">AI capex mapped</div></div>
+      <div class="tile hot"><div class="tnum">9</div><div class="tlbl">utilities exposed</div></div>
+      <div class="tile"><div class="tnum">31 GW</div><div class="tlbl">new demand</div></div>
+    </div>
+
+    <div class="panel">
+      <div class="ptitle">Utility repricing exposure <span>traced to FERC + 10-Q</span></div>
+      <div class="row"><div class="rname">Utility 01</div><div class="bar"><i style="width:92%"></i></div><div class="rval">+22%</div></div>
+      <div class="row"><div class="rname">Utility 02</div><div class="bar"><i style="width:84%"></i></div><div class="rval">+21%</div></div>
+      <div class="row"><div class="rname">Utility 03</div><div class="bar"><i style="width:74%"></i></div><div class="rval">+18%</div></div>
+      <div class="row"><div class="rname lock">Utility 04</div><div class="bar mut"><i style="width:46%"></i></div><div class="rval lock">&#128274;</div></div>
+      <div class="row"><div class="rname lock">Utility 05</div><div class="bar mut"><i style="width:38%"></i></div><div class="rval lock">&#128274;</div></div>
+    </div>
+
+    <div class="foot">
+      <div class="src">1M+ verified sources · expert-vetted · full citation trail</div>
+      <div class="cta">Read the Atlas &rarr;</div>
+    </div>
+  </div>
+</body></html>

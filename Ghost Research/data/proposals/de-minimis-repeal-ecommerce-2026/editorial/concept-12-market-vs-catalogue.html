@@ -1,0 +1,55 @@
+<!doctype html><html><head><meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#F8F8FF;--red:#EF4444;--blob-stroke:rgba(248,248,255,.12)}
+body{width:100%;height:100vh;font-family:'Manrope',sans-serif;color:var(--ink);position:relative;overflow:hidden;background:linear-gradient(135deg,#181650 0%,#06062D 100%)}
+.frame{position:absolute;inset:18px;border:2px solid var(--red);border-radius:28px;z-index:3;pointer-events:none}
+.blob-ring{position:absolute;z-index:0;bottom:-14%;right:-8%;width:46%;aspect-ratio:1;border-radius:50%;border:1.5px solid var(--blob-stroke)}
+.wrap{position:relative;z-index:1;height:100%;padding:8.5%;display:flex;flex-direction:column;justify-content:space-between}
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.gh-logo{width:clamp(72px,8.5vh,100px);height:clamp(72px,8.5vh,100px)}.gh-logo svg{width:100%;height:100%;display:block}
+.eyebrow{font-size:clamp(17px,2vh,20px);font-weight:700;letter-spacing:.13em;text-transform:uppercase;text-align:right;color:var(--red);max-width:18ch;line-height:1.4}
+.btm{display:flex;flex-direction:column;gap:2.6vh}
+.h1{font-family:'Oranienbaum',serif;font-size:clamp(50px,6.6vh,82px);line-height:1.03;max-width:20ch}
+.h1 em{font-style:italic;color:var(--red)}
+.split{display:flex;gap:20px}
+.pane{flex:1;padding:24px;border:1px solid rgba(248,248,255,.18);border-radius:14px}
+.pane.right{border:1px solid var(--red);background:rgba(239,68,68,.08)}
+.ph{font-size:clamp(16px,1.8vh,19px);text-transform:uppercase;letter-spacing:.1em;color:rgba(248,248,255,.6);font-weight:700}
+.pane.right .ph{color:var(--red)}
+.pt{font-family:'Oranienbaum',serif;font-size:clamp(28px,3.3vh,40px);margin-top:8px;line-height:1.08}
+.pd{font-size:clamp(19px,2.1vh,23px);color:rgba(248,248,255,.78);margin-top:10px;line-height:1.4}
+.tag{display:inline-block;margin-top:12px;background:var(--red);color:#fff;font-size:clamp(15px,1.7vh,18px);font-weight:700;padding:7px 13px;border-radius:6px;letter-spacing:.04em}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:#fff;padding:15px 26px;border-radius:8px;font-weight:700;font-size:clamp(21px,2.3vh,25px);width:fit-content}
+.foot{display:flex;justify-content:space-between;align-items:flex-end;gap:18px}
+.url{font-size:clamp(19px,2.1vh,23px);font-weight:600}
+.cred{font-size:clamp(19px,2vh,21px);color:rgba(248,248,255,.62);text-align:right}
+</style></head>
+<body>
+<div class="frame"></div><div class="blob-ring"></div>
+<div class="wrap">
+  <div class="top">
+    <div class="gh-logo" aria-label="Ghost Research"><svg viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#EF4444"/><circle cx="50" cy="50" r="19" fill="#fff"/></svg></div>
+    <div class="eyebrow">For those who saw it<br>but didn't buy</div>
+  </div>
+  <div class="btm">
+    <h1 class="h1">You saw the deadline. Here's the part you <em>didn't.</em></h1>
+    <div class="split">
+      <div class="pane">
+        <div class="ph">The report</div>
+        <div class="pt">Models the market</div>
+        <div class="pd">Landed cost by band and by lane, across the cross-border market.</div>
+      </div>
+      <div class="pane right">
+        <div class="ph">Ghost Elite</div>
+        <div class="pt">Models your catalogue</div>
+        <div class="pd">Your SKUs, your lanes — a bespoke landed-cost model.</div>
+        <span class="tag">24-HR CUSTOM MANDATE</span>
+      </div>
+    </div>
+    <span class="cta">Commission a custom mandate →</span>
+    <div class="foot"><span class="url">Ghostresearch.com</span><span class="cred">1M+ curated sources · expert-vetted</span></div>
+  </div>
+</div>
+</body></html>

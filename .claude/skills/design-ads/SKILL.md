@@ -65,6 +65,24 @@ Every concept MUST follow these:
 - ❌ NO casual lifestyle imagery (coffee shops, smiling-at-camera)
 - ❌ NO multiple competing focal points
 
+## Step 3.5 — Pick a style preset per concept
+
+Read the **Style Preset Library**: `.claude/skills/_shared/style-presets.md`
+(repo root: `Ghost Research/.claude/skills/_shared/style-presets.md`). It defines 9 named
+looks — **luxury, startup, cinematic, SaaS, Instagram, Meta, landing-page banner,
+UI-heavy, suspense** — each a brand-locked recipe.
+
+- If the user named presets (e.g. "/design-ads cinematic + suspense for Week 1, UI-heavy + SaaS for Week 2"), apply them to the matching concepts.
+- If the user named none, choose per concept by hook: time-decay / named-villain / hidden-cost → Suspense; data-proof finding → UI-heavy or SaaS; prestige / Ghost Elite → Luxury; founder/launch hero → Cinematic.
+- Aesthetic presets (luxury/startup/cinematic/SaaS/UI-heavy/suspense) set mood; placement presets (Instagram/Meta/landing-page banner) lock format. They combine — "Instagram + Cinematic".
+- Presets pair naturally with the Week split: Suspense + Cinematic suit Week-1 hype (withheld info, anticipation); UI-heavy + SaaS suit Week-2 launch (show the data product). A preset NEVER overrides the §0 global locks in the library or the Step 2 / Step 3 rules (logo every frame, two-neutrals+one-accent, Oranienbaum/Manrope, no price in ad copy, institutional voice, no AI clichés, Week-1/Week-2 honesty).
+
+**RavenMCP consult (optional).** If the `raven` MCP server is connected, query it for the
+chosen preset's design domains (UI patterns + tokens for SaaS / UI-heavy / banner; visual
+trends + color theory for luxury; motion/easing for cinematic / suspense), then translate
+that into Ghost-locked specs. RavenMCP serves design *knowledge*, not images — it sharpens
+concepts and never overrides a lock. If `raven` isn't connected, proceed normally.
+
 ## Step 4 — Design the concept portfolio
 
 Generate **8–12 concepts**, distributed across Week 1 (hype) and Week 2 (content):
@@ -110,6 +128,7 @@ status: drafted
 
 **Phase:** 🔒 HYPE-SAFE (Week 1) | 🚀 CONTENT-ACTIVE (Week 2)
 **Maps to calendar:** [Day X, Week Y — from Section 3 of brief]
+**Style preset:** [from style-presets.md — e.g. "Suspense", "UI-heavy + Meta". Aesthetic + optional placement]
 **Platform:** [IG / LinkedIn / X / FB]
 **Format:** [Static 1:1 / Video 9:16 / Carousel / Founder POV / etc.]
 **Hook used:** [Hook 1, 2, or 3 from Section 0.3 — must match phase: Hooks 1+2 with Wk1, Hook 3 with Wk2]

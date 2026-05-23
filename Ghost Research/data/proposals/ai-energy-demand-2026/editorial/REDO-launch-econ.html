@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%}
+  body{position:relative;overflow:hidden;width:100%;height:100vh;
+    font-family:'Manrope',system-ui,sans-serif;color:#F4F4FB;
+    background:
+      radial-gradient(130% 100% at 85% 0%, rgba(40,38,137,.45) 0%, rgba(11,10,58,0) 55%),
+      linear-gradient(160deg,#181650 0%,#0C0B40 50%,#06062D 100%);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body::before{content:"";position:absolute;inset:0;opacity:.045;pointer-events:none;
+    background-image:repeating-linear-gradient(90deg,#fff 0 1px,transparent 1px 60px);}
+  .frame{position:relative;z-index:1;width:100%;height:100vh;padding:6.5%;
+    display:flex;flex-direction:column}
+
+  /* MASTHEAD */
+  .masthead{display:flex;align-items:flex-end;justify-content:space-between;
+    padding-bottom:18px;border-bottom:1.5px solid rgba(244,244,251,.28)}
+  .gh-logo{display:inline-flex;flex-direction:column;gap:3px;align-items:flex-start;
+    line-height:1;font-family:'Oranienbaum',serif;color:#F4F4FB;text-decoration:none}
+  .gh-logo .r1{display:flex;align-items:center;font-size:40px;letter-spacing:-.01em}
+  .gh-logo .sq{position:relative;width:31px;height:31px;background:#EF4444;border-radius:7px;
+    margin:0 3px;flex-shrink:0;align-self:center;transform:translateY(2px)}
+  .gh-logo .sq::after{content:"";position:absolute;inset:10px;background:#fff;border-radius:2px}
+  .gh-logo .r2{font-size:16px;letter-spacing:.42em;margin-left:1px;margin-top:3px}
+  .dateline{font-size:16px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:rgba(244,244,251,.62);text-align:right;line-height:1.5}
+  .dateline b{color:#EF4444;font-weight:700}
+
+  /* HEAD */
+  .eyebrow{font-size:19px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#EF4444;margin-top:30px}
+  .h1{font-family:'Oranienbaum',serif;font-weight:400;font-size:54px;line-height:1.05;
+    letter-spacing:-.015em;color:#F4F4FB;margin-top:14px;max-width:18ch}
+  .deck{font-size:24px;line-height:1.5;color:rgba(244,244,251,.74);max-width:40ch;margin-top:16px;font-weight:400}
+
+  /* CHART */
+  .chart{margin-top:30px;display:flex;flex-direction:column;gap:13px}
+  .chart-title{font-size:16px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:rgba(244,244,251,.55);margin-bottom:4px}
+  .row{display:grid;grid-template-columns:96px 1fr 70px;align-items:center;gap:16px}
+  .row .lab{font-size:18px;font-weight:600;color:rgba(244,244,251,.85);letter-spacing:.01em}
+  .track{height:18px;background:rgba(244,244,251,.10);border-radius:3px;overflow:hidden}
+  .bar{height:100%;border-radius:3px}
+  .bar.red{background:#EF4444}
+  .bar.grey{background:rgba(244,244,251,.34)}
+  .val{font-size:18px;font-weight:700;text-align:right;color:#F4F4FB}
+  .val.muted{color:rgba(244,244,251,.5);font-weight:600}
+
+  /* FOOT */
+  .foot{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;
+    padding-top:22px;border-top:1.5px solid rgba(244,244,251,.20)}
+  .cta{display:inline-flex;align-items:center;gap:13px;background:#EF4444;color:#fff;
+    padding:21px 36px;border-radius:5px;font-weight:800;font-size:24px;letter-spacing:.01em;text-decoration:none}
+  .cta::after{content:"→";font-weight:500}
+  .src{font-size:17px;line-height:1.5;letter-spacing:.02em;color:rgba(244,244,251,.6);text-align:right;max-width:30ch}
+  .src sup{color:#EF4444;font-weight:700}
+</style></head>
+<body>
+  <div class="frame">
+    <div class="masthead">
+      <a class="gh-logo"><div class="r1">GH<span class="sq"></span>ST</div><div class="r2">RESEARCH</div></a>
+      <div class="dateline">The AI Energy Demand Atlas<br><b>Live · June 2026</b></div>
+    </div>
+
+    <div class="eyebrow">The repricing has started</div>
+    <h1 class="h1">Three utilities already repriced. Six are next.</h1>
+    <p class="deck">Every desk that waits gets repriced by the desks that didn't. The Atlas names all nine — and the six next in line.</p>
+
+    <div class="chart">
+      <div class="chart-title">Utility exposure repricing · AI demand</div>
+      <div class="row"><div class="lab">Utility 01</div><div class="track"><div class="bar red" style="width:96%"></div></div><div class="val">+22%</div></div>
+      <div class="row"><div class="lab">Utility 02</div><div class="track"><div class="bar red" style="width:88%"></div></div><div class="val">+20%</div></div>
+      <div class="row"><div class="lab">Utility 03</div><div class="track"><div class="bar red" style="width:80%"></div></div><div class="val">+18%</div></div>
+      <div class="row"><div class="lab">Utility 04</div><div class="track"><div class="bar grey" style="width:46%"></div></div><div class="val muted">next</div></div>
+      <div class="row"><div class="lab">Utility 05</div><div class="track"><div class="bar grey" style="width:40%"></div></div><div class="val muted">next</div></div>
+      <div class="row"><div class="lab">Utility 06</div><div class="track"><div class="bar grey" style="width:34%"></div></div><div class="val muted">next</div></div>
+    </div>
+
+    <div class="foot">
+      <a class="cta">Read the Atlas</a>
+      <div class="src">Source: FERC filings · hyperscaler 10-Qs · utility capex disclosures.<br>Caspr-synthesized · expert-vetted.<sup>[1]</sup></div>
+    </div>
+  </div>
+</body></html>
